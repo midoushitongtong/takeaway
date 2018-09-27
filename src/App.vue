@@ -12,3 +12,11 @@
   color: #2c3e50;
 }
 </style>
+
+<style lang="stylus">
+  body {
+    div {
+      color: #06f;
+    }
+  }
+</style>
