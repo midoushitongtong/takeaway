@@ -1,6 +1,6 @@
 # takeaway
 
-## 目录结构
+### 目录结构
 + src
   - assets `通用资源文件[css, js, img]`
   - component `非路由的组件`
@@ -12,4 +12,6 @@
   - mock `模拟数据接口的模块`
   - App.vue `根组件`
   - main.js `入口文件`
-  
+
+### 
+

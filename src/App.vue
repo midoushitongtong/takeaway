@@ -1,22 +1,26 @@
 <template>
   <div id="app">
-    123
+    <router-view/>
+    <FooterNav/>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-</style>
+<script>
+import FooterNav from './components/footer/FooterNav';
 
-<style lang="stylus">
+export default {
+  name: 'App',
+  components: {
+    FooterNav
+  }
+};
+</script>
+
+<style lang="scss">
   body {
-    div {
-      color: #06f;
-    }
+    background: #f1f1f1;
+  }
+  a {
+    text-decoration: none;
   }
 </style>
