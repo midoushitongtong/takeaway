@@ -193,6 +193,7 @@ export default {
         // 跳转个人中心
         this.$router.replace('/profile');
       } else {
+        this.refreshImageCaptcha();
         this.showAlertTooltip(result.msg);
       }
     }
