@@ -7,13 +7,13 @@ export const requestAddress = (geoHash) => {
 };
 
 // 2、获取食品分类列表
-export const requestFoods = () => {
+export const requestFoodTypes = () => {
   let url = `/index_category`;
   return ajax(url, {}, 'GET');
 };
 
 // 3、根据经纬度获取商铺列表
-export const requestShops = (longitude, latitude) => {
+export const requestMerchantList = (longitude, latitude) => {
   let url = `/shops`;
   return ajax(url, { longitude, latitude }, 'GET');
 };

@@ -1,4 +1,12 @@
 import axios from 'axios';
+import config from '../config';
+
+// 设置请求的前缀
+if (process.env.NODE_ENV === 'development') {
+  axios.defaults.baseURL = config.dev.API_ROOT;
+} else {
+  axios.defaults.baseURL = config.prod.API_ROOT;
+}
 
 /*
   ajax 请求封装模块

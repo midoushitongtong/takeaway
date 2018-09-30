@@ -9,11 +9,16 @@
 
 <script>
 import FooterNav from './components/footer/FooterNav';
+import { requestFoodTypes } from './api';
 
 export default {
   name: 'App',
   components: {
     FooterNav
+  },
+  async mounted () {
+    const result = await requestFoodTypes();
+    console.log(result);
   }
 };
 </script>

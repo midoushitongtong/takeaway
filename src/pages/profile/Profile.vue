@@ -13,7 +13,7 @@
     </section>
     <section class="account-asset-container">
       <div class="money-container">
-        <p class="money">0.00 元</p>
+        <p class="money">0.00</p>
         <p>我的余额</p>
       </div>
       <div class="preferential-container">
