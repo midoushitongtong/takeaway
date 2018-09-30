@@ -1,21 +1,11 @@
-import ajax from './ajax';
+import common from './common';
+import food from './food';
+import merchant from './merchant';
 
-// 1、根据经纬度获取位置详情
-export const requestAddress = (geoHash) => {
-  let url = `/position/${geoHash}`;
-  return ajax(url, {}, 'GET');
-};
-
-// 2、获取食品分类列表
-export const requestFoodTypes = () => {
-  let url = `/index_category`;
-  return ajax(url, {}, 'GET');
-};
-
-// 3、根据经纬度获取商铺列表
-export const requestMerchantList = (longitude, latitude) => {
-  let url = `/shops`;
-  return ajax(url, { longitude, latitude }, 'GET');
+export default {
+  common,
+  food,
+  merchant
 };
 
 // 4、根据经纬度和关键字搜索商铺列表

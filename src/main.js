@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+
 // 初始化 css 样式
 import 'normalize.css';
 // 图标库

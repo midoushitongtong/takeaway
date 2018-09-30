@@ -19,7 +19,7 @@ export default function ajax (url, data = {}, type = 'GET') {
         // 拼接 url query 参数
         let dataStr = '';
         Object.keys(data).forEach(key => {
-          dataStr = key + '=' + data[key] + '&';
+          dataStr += key + '=' + data[key] + '&';
         });
         if (dataStr !== '') {
           dataStr = dataStr.substring(0, dataStr.lastIndexOf('&'));

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view></router-view>
     <FooterNav
       v-show="$route.meta.showFooterNav"
     />
@@ -9,16 +9,21 @@
 
 <script>
 import FooterNav from './components/footer/FooterNav';
-import { requestFoodTypes } from './api';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
   components: {
     FooterNav
   },
-  async mounted () {
-    const result = await requestFoodTypes();
-    console.log(result);
+  mounted () {
+    // 更新地址信息
+    this.asyncEditAddress();
+  },
+  methods: {
+    ...mapActions('common', [
+      'asyncEditAddress'
+    ])
   }
 };
 </script>
@@ -27,6 +32,7 @@ export default {
   body {
     background: #f1f1f1;
   }
+
   a {
     text-decoration: none;
   }

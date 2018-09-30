@@ -13,7 +13,7 @@ export default {
     title: String
   }
 };
-</script>a
+</script>
 
 <style lang="scss">
   $height: 45px;
@@ -42,8 +42,13 @@ export default {
       font-size: 30px;
     }
     .header-location {
+      overflow: hidden;
       position: relative;
       flex: 1;
+      padding-left: 50px;
+      padding-right: 50px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       text-align: center;
     }
   }
