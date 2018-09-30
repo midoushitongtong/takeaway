@@ -4,6 +4,7 @@ import Home from '../pages/home/Home';
 import Search from '../pages/search/Search';
 import Order from '../pages/order/Order';
 import Profile from '../pages/profile/Profile';
+import SignIn from '../pages/account/SignIn';
 
 // 注入 vue-router 插件
 Vue.use(VueRouter);
@@ -15,23 +16,42 @@ export default new VueRouter({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      meta: {
+        showFooterNav: true
+      }
     },
     {
       path: '/home',
-      component: Home
+      component: Home,
+      meta: {
+        showFooterNav: true
+      }
     },
     {
       path: '/search',
-      component: Search
+      component: Search,
+      meta: {
+        showFooterNav: true
+      }
     },
     {
       path: '/order',
-      component: Order
+      component: Order,
+      meta: {
+        showFooterNav: true
+      }
     },
     {
       path: '/profile',
-      component: Profile
+      component: Profile,
+      meta: {
+        showFooterNav: true
+      }
+    },
+    {
+      path: '/signIn',
+      component: SignIn
     }
   ]
 });

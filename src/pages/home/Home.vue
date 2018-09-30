@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <header class="header-container">
-      <a class="search">
+  <section>
+    <header-nav title="深圳">
+      <router-link to="/search" class="search" slot="left">
         <i class="material-icons">search</i>
-      </a>
-      <span class="header-location">深圳</span>
-    </header>
-    <div class="food-category-container">
+      </router-link>
+    </header-nav>
+    <section class="food-category-container">
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -73,34 +72,29 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
       </div>
-    </div>
-    <div class="merchant-container">
+    </section>
+
+    <section class="merchant-container">
       <p class="title">附件商家</p>
-      <div class="merchant-list-container">
-        <a class="merchant-item">
-          <div class="merchant-logo">
-            <img src="../../assets/img/merchant/01.jpg" alt="">
-          </div>
-          <div class="merchant-info">
-            <div class="merchant-title">小张烧烤店</div>
-            <div class="merchant-rank">
-              <div class="merchant-start"></div>
-              <div class="merchant-sale-count">月售358单</div>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+      <home-merchant-list/>
+    </section>
+  </section>
 </template>
 
 <script>
+import HeaderNav from '../../components/header/HeaderNav';
+import HomeMerchantList from '../../components/merchant/HomMerchantList';
+
 import 'swiper/dist/css/swiper.min.css';
 import Swiper from 'swiper';
 
 /* eslint-disable no-new */
 export default {
   name: 'Home',
+  components: {
+    HeaderNav,
+    HomeMerchantList
+  },
   mounted () {
     new Swiper('.swiper-container', {
       pagination: {
@@ -112,37 +106,7 @@ export default {
 </script>
 
 <style lang="scss">
-  // header container
   $height: 45px;
-  .header-container {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: $height;
-    background-color: #06f;
-    color: #fff;
-    .search {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: $height;
-      height: 100%;
-    }
-    .search .material-icons {
-      font-size: 30px;
-    }
-    .header-location {
-      position: relative;
-      left: -$height / 2;
-      flex: 1;
-      text-align: center;
-    }
-  }
-
   // product container
   .food-category-container {
     position: relative;
@@ -173,19 +137,6 @@ export default {
       }
       .swiper-pagination {
         bottom: 5px;
-      }
-    }
-  }
-
-  // merchant container
-  .merchant-container {
-    position: relative;
-    margin-top: 20px;
-    background-color: #fff;
-    .merchant-item {
-      .merchant-logo img {
-        width: 75px;
-        height: 75px;
       }
     }
   }
