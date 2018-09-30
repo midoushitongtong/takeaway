@@ -7,6 +7,7 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   axios.defaults.baseURL = config.prod.API_ROOT;
 }
+axios.defaults.withCredentials = true;
 
 /*
   ajax 请求封装模块

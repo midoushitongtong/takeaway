@@ -15,7 +15,7 @@ export default {
   actions: {
     async asyncEditNearbyMerchantList ({ commit, state }, { longitude, latitude }) {
       // 异步获取数据
-      const result = await api.merchant.getMerchantList(longitude, latitude);
+      const result = await api.merchant.getNearbyMerchantList(longitude, latitude);
       // 提交 mutations
       if (result.code === 0) {
         commit(types.EDIT_NEARBY_MERCHANT_LIST, result.data);
