@@ -5,21 +5,30 @@ export default {
   sendPhoneCaptcha (phone) {
     return ajax(
       `${config.API_ROOT}/sendcode`,
-      { phone },
+      {
+        phone
+      },
       'GET'
     );
   },
   signInType1 (phone, code) {
     return ajax(
       `${config.API_ROOT}/login_sms`,
-      { phone, code },
+      {
+        phone,
+        code
+      },
       'POST'
     );
   },
   signInType2 (username, password, captcha) {
     return ajax(
       `${config.API_ROOT}/login_pwd`,
-      { name: username, pwd: password, captcha },
+      {
+        name: username,
+        pwd: password,
+        captcha
+      },
       'POST'
     );
   },

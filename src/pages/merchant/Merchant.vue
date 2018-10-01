@@ -36,8 +36,6 @@ export default {
   },
   watch: {
     $route (to, from) {
-      console.log(to.meta.index);
-      console.log(from.meta.index);
       if (to.meta.index > from.meta.index) {
         this.transitionName = 'slide-left';
       } else {
@@ -50,21 +48,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .slide-right-enter-active,
-  .slide-right-leave-active,
   .slide-left-enter-active,
-  .slide-left-leave-active {
+  .slide-left-leave-active,
+  .slide-right-enter-active,
+  .slide-right-leave-active {
     position: absolute;
     will-change: transform;
     transition: transform .5s;
-  }
-
-  .slide-right-enter {
-    transform: translate3d(-500%, 0, 0);
-  }
-
-  .slide-right-leave-active {
-    transform: translate3d(500%, 0, 0);
   }
 
   .slide-left-enter {
@@ -73,6 +63,14 @@ export default {
 
   .slide-left-leave-active {
     transform: translate3d(-500%, 0, 0);
+  }
+
+  .slide-right-enter {
+    transform: translate3d(-500%, 0, 0);
+  }
+
+  .slide-right-leave-active {
+    transform: translate3d(500%, 0, 0);
   }
 
   .merchant {
