@@ -5,6 +5,10 @@ import Search from '../pages/search/Search';
 import Order from '../pages/order/Order';
 import Profile from '../pages/profile/Profile';
 import SignIn from '../pages/account/SignIn';
+import Merchant from '../pages/merchant/Merchant';
+import MerchantFoodList from '../pages/merchant/MerchantFoodList';
+import MerchantRatingList from '../pages/merchant/MerchantRatingList';
+import MerchantInfo from '../pages/merchant/MerchantInfo';
 
 // 注入 vue-router 插件
 Vue.use(VueRouter);
@@ -52,6 +56,28 @@ export default new VueRouter({
     {
       path: '/signIn',
       component: SignIn
+    },
+    {
+      path: '/merchant',
+      component: Merchant,
+      children: [
+        {
+          path: '/',
+          redirect: '/merchant/foods'
+        },
+        {
+          path: '/merchant/foods',
+          component: MerchantFoodList
+        },
+        {
+          path: '/merchant/ratings',
+          component: MerchantRatingList
+        },
+        {
+          path: '/merchant/info',
+          component: MerchantInfo
+        }
+      ]
     }
   ]
 });

@@ -9,6 +9,7 @@ import 'normalize.css';
 import 'material-icons';
 // 组件库
 import { Button } from 'mint-ui';
+
 Vue.component(Button.name, Button);
 
 // 实例化VM

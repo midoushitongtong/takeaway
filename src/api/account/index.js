@@ -1,24 +1,40 @@
 import ajax from '../ajax';
+import config from '../../config';
 
 export default {
   sendPhoneCaptcha (phone) {
-    let url = `/sendcode`;
-    return ajax(url, { phone }, 'GET');
+    return ajax(
+      `${config.API_ROOT}/sendcode`,
+      { phone },
+      'GET'
+    );
   },
   signInType1 (phone, code) {
-    let url = `/login_sms`;
-    return ajax(url, { phone, code }, 'POST');
+    return ajax(
+      `${config.API_ROOT}/login_sms`,
+      { phone, code },
+      'POST'
+    );
   },
   signInType2 (username, password, captcha) {
-    let url = `/login_pwd`;
-    return ajax(url, { name: username, pwd: password, captcha }, 'POST');
+    return ajax(
+      `${config.API_ROOT}/login_pwd`,
+      { name: username, pwd: password, captcha },
+      'POST'
+    );
   },
   getUserInfo () {
-    let url = `/userinfo`;
-    return ajax(url, {}, 'GET');
+    return ajax(
+      `${config.API_ROOT}/userinfo`,
+      {},
+      'GET'
+    );
   },
   signOut () {
-    let url = `/logout`;
-    return ajax(url, {}, 'GET');
+    return ajax(
+      `${config.API_ROOT}/logout`,
+      {},
+      'GET'
+    );
   }
 };

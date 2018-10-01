@@ -4,9 +4,10 @@
     <div class="merchant-list-container"
          v-if="nearbyMerchantList.length"
     >
-      <a class="merchant-item"
-         v-for="(merchant, index) in nearbyMerchantList"
-         :key="index"
+      <router-link class="merchant-item"
+                   to="/merchant"
+                   v-for="(merchant, index) in nearbyMerchantList"
+                   :key="index"
       >
         <div class="merchant-logo">
           <img :src="baseImageURL + merchant.image_path" alt="">
@@ -27,7 +28,7 @@
             </div>
           </div>
         </div>
-      </a>
+      </router-link>
     </div>
     <div
       v-else
@@ -65,14 +66,14 @@ export default {
     ])
   },
   mounted () {
-    this.asyncEditNearbyMerchantList({
+    this.asyncInitNearbyMerchantList({
       longitude: this.address.longitude,
       latitude: this.address.latitude
     });
   },
   methods: {
     ...mapActions('merchant', [
-      'asyncEditNearbyMerchantList'
+      'asyncInitNearbyMerchantList'
     ])
   }
 };
@@ -97,6 +98,7 @@ export default {
       display: flex;
       font-size: 13px;
       padding: 10px;
+      color: #666;
       .merchant-logo img {
         width: 100px;
         height: 80px;

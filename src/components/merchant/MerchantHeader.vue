@@ -1,10 +1,10 @@
 <template>
-  <div>MerchantFoodList</div>
+  <div>MerchantHeader</div>
 </template>
 
 <script>
 export default {
-  name: 'MerchantFoodList'
+  name: 'MerchantHeader'
 };
 </script>
 

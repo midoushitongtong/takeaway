@@ -1,8 +1,12 @@
 import ajax from '../ajax';
+import config from '../../config';
 
 export default {
   getFoodCategoryList () {
-    let url = `/index_category`;
-    return ajax(url, {}, 'GET');
+    return ajax(
+      `${config.API_ROOT}/index_category`,
+      {},
+      'GET'
+    );
   }
 };

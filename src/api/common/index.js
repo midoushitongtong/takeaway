@@ -1,8 +1,12 @@
 import ajax from '../ajax';
+import config from '../../config';
 
 export default {
   getAddress (geoHash) {
-    let url = `/position/${geoHash}`;
-    return ajax(url, {}, 'GET');
+    return ajax(
+      `${config.API_ROOT}/position/${geoHash}`,
+      {},
+      'GET'
+    );
   }
 };
