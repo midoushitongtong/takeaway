@@ -17,7 +17,7 @@ export default {
     let url = `/userinfo`;
     return ajax(url, {}, 'GET');
   },
-  logout () {
+  signOut () {
     let url = `/logout`;
     return ajax(url, {}, 'GET');
   }

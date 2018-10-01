@@ -20,5 +20,7 @@
   + App.vue `根组件`
   + main.js `入口文件`
 
-### 
+### mint
+- 按需加载
+  npm install babel-plugin-component -D
 

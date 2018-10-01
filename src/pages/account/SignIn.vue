@@ -62,7 +62,8 @@
         </section>
         <button type="button" class="sign-in"
                 @click="signIn"
-        >登陆</button>
+        >登陆
+        </button>
       </section>
     </div>
     <AlertTooltip
@@ -74,6 +75,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import AlertTooltip from '../../components/common/AlertTooltip';
 import api from '../../api';
 
@@ -105,7 +107,14 @@ export default {
       return /^\d{11}$/.test(this.phone);
     }
   },
+  mounted () {
+    // 刷新验证码
+    this.refreshImageCaptcha();
+  },
   methods: {
+    ...mapActions('account', [
+      'editUserInfo'
+    ]),
     showAlertTooltip (alertText) {
       this.showAlertTooltipFlag = true;
       this.alertText = alertText;
@@ -187,13 +196,11 @@ export default {
 
       // 处理登陆结果
       if (result.code === 0) {
-        // const user = result.user;
         // 保存用户登陆状态
-
+        this.editUserInfo(result.data);
         // 跳转个人中心
         this.$router.replace('/profile');
       } else {
-        this.refreshImageCaptcha();
         this.showAlertTooltip(result.msg);
       }
     }

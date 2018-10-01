@@ -1,4 +1,4 @@
-import types from '../types';
+import types from '../mutation-types';
 import api from '../../api';
 
 export default {

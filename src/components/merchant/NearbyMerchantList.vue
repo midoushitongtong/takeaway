@@ -1,5 +1,6 @@
 <template>
-  <section>
+  <section class="merchant-container">
+    <p class="title">附件商家</p>
     <div class="merchant-list-container"
          v-if="nearbyMerchantList.length"
     >

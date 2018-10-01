@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { Indicator } from 'mint-ui';
 import FooterNav from './components/footer/FooterNav';
 import { mapActions } from 'vuex';
 
@@ -16,13 +17,20 @@ export default {
   components: {
     FooterNav
   },
-  mounted () {
+  async mounted () {
+    Indicator.open();
     // 更新地址信息
-    this.asyncEditAddress();
+    await this.asyncEditAddress();
+    // 更新用户信息
+    await this.asyncInitUserInfo();
+    Indicator.close();
   },
   methods: {
     ...mapActions('common', [
       'asyncEditAddress'
+    ]),
+    ...mapActions('account', [
+      'asyncInitUserInfo'
     ])
   }
 };
