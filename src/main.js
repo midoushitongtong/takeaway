@@ -8,9 +8,10 @@ import 'normalize.css';
 // 图标库
 import 'material-icons';
 // 组件库
-import { Button } from 'mint-ui';
-
+import { Button, Badge, Popup } from 'mint-ui';
+Vue.component(Badge.name, Badge);
 Vue.component(Button.name, Button);
+Vue.component(Popup.name, Popup);
 
 // 实例化VM
 new Vue({

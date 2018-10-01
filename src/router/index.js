@@ -67,15 +67,24 @@ export default new VueRouter({
         },
         {
           path: '/merchant/foods',
-          component: MerchantFoodList
+          component: MerchantFoodList,
+          meta: {
+            index: 0
+          }
         },
         {
           path: '/merchant/ratings',
-          component: MerchantRatingList
+          component: MerchantRatingList,
+          meta: {
+            index: 1
+          }
         },
         {
           path: '/merchant/info',
-          component: MerchantInfo
+          component: MerchantInfo,
+          meta: {
+            index: 2
+          }
         }
       ]
     }

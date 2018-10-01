@@ -15,35 +15,66 @@
       >信息
       </router-link>
     </div>
-    <router-view/>
+    <transition :name="transitionName">
+      <router-view/>
+    </transition>
   </section>
 </template>
 
 <script>
 import MerchantHeader from '../../components/merchant/MerchantHeader';
-import { mapActions } from 'vuex';
 
 export default {
   name: 'Merchant',
+  data () {
+    return {
+      transitionName: ''
+    };
+  },
   components: {
     MerchantHeader
   },
-  mounted () {
-    this.asyncEditMerchantInfo();
-    this.asyncEditMerchantFoodList();
-    this.asyncEditMerchantRatingList();
-  },
-  methods: {
-    ...mapActions('merchant', [
-      'asyncEditMerchantInfo',
-      'asyncEditMerchantFoodList',
-      'asyncEditMerchantRatingList'
-    ])
+  watch: {
+    $route (to, from) {
+      console.log(to.meta.index);
+      console.log(from.meta.index);
+      if (to.meta.index > from.meta.index) {
+        this.transitionName = 'slide-left';
+      } else {
+        this.transitionName = 'slide-right';
+      }
+    }
   }
+
 };
 </script>
 
 <style lang="scss">
+  .slide-right-enter-active,
+  .slide-right-leave-active,
+  .slide-left-enter-active,
+  .slide-left-leave-active {
+    position: absolute;
+    will-change: transform;
+    transition: transform .5s;
+  }
+
+  .slide-right-enter {
+    transform: translate3d(-500%, 0, 0);
+  }
+
+  .slide-right-leave-active {
+    transform: translate3d(500%, 0, 0);
+  }
+
+  .slide-left-enter {
+    transform: translate3d(500%, 0, 0);
+  }
+
+  .slide-left-leave-active {
+    transform: translate3d(-500%, 0, 0);
+  }
+
   .merchant {
     height: 100vh;
     background-color: #fff;
