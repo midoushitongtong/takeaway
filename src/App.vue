@@ -2,7 +2,7 @@
   <div id="app">
     <router-view></router-view>
     <FooterNav
-      v-show="$route.meta.showFooterNav"
+      v-if="$route.meta.showFooterNav"
     />
   </div>
 </template>
@@ -10,12 +10,17 @@
 <script>
 import { Indicator } from 'mint-ui';
 import FooterNav from './components/footer/FooterNav';
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'App',
   components: {
     FooterNav
+  },
+  computed: {
+    ...mapState('common', [
+      'address'
+    ])
   },
   async mounted () {
     Indicator.open();
@@ -23,6 +28,11 @@ export default {
     await this.asyncEditAddress();
     // 更新用户信息
     await this.asyncInitUserInfo();
+    // 更新附件商家
+    await this.asyncInitNearbyMerchantList({
+      longitude: this.address.longitude,
+      latitude: this.address.latitude
+    });
     Indicator.close();
   },
   methods: {
@@ -31,6 +41,9 @@ export default {
     ]),
     ...mapActions('account', [
       'asyncInitUserInfo'
+    ]),
+    ...mapActions('merchant', [
+      'asyncInitNearbyMerchantList'
     ])
   }
 };

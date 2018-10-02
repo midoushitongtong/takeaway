@@ -197,7 +197,7 @@ export default {
       // 处理登陆结果
       if (result.code === 0) {
         // 保存用户登陆状态
-        this.editUserInfo(result.data);
+        this.editUserInfo({ userInfo: result.data });
         // 跳转个人中心
         this.$router.replace('/profile');
       } else {

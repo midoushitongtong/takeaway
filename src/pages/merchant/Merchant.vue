@@ -58,19 +58,19 @@ export default {
   }
 
   .slide-left-enter {
-    transform: translate3d(500%, 0, 0);
+    transform: translate3d(510%, 0, 0);
   }
 
   .slide-left-leave-active {
-    transform: translate3d(-500%, 0, 0);
+    transform: translate3d(-510%, 0, 0);
   }
 
   .slide-right-enter {
-    transform: translate3d(-500%, 0, 0);
+    transform: translate3d(-510%, 0, 0);
   }
 
   .slide-right-leave-active {
-    transform: translate3d(500%, 0, 0);
+    transform: translate3d(510%, 0, 0);
   }
 
   .merchant {

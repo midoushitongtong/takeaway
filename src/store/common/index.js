@@ -12,7 +12,7 @@ export default {
     address: {}
   },
   mutations: {
-    [types.EDIT_ADDRESS] (state, address) {
+    [types.EDIT_ADDRESS] (state, { address }) {
       state.address = address;
     }
   },
@@ -20,10 +20,10 @@ export default {
     async asyncEditAddress ({ commit, state }) {
       // 异步获取数据
       const geoHash = state.latitude + ',' + state.longitude;
-      const result = await api.common.getAddress(geoHash);
+      const result = await api.common.getAddress({ geoHash });
       // 提交 mutations
       if (result.code === 0) {
-        commit(types.EDIT_ADDRESS, result.data);
+        commit(types.EDIT_ADDRESS, { address: result.data });
       } else {
         console.log('获取信息失败!');
       }

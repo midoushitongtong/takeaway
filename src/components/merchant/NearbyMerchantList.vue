@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 import Start from '../common/Star';
 
 export default {
@@ -58,22 +58,8 @@ export default {
     };
   },
   computed: {
-    ...mapState('common', [
-      'address'
-    ]),
     ...mapState('merchant', [
       'nearbyMerchantList'
-    ])
-  },
-  mounted () {
-    this.asyncInitNearbyMerchantList({
-      longitude: this.address.longitude,
-      latitude: this.address.latitude
-    });
-  },
-  methods: {
-    ...mapActions('merchant', [
-      'asyncInitNearbyMerchantList'
     ])
   }
 };

@@ -2,7 +2,7 @@ import ajax from '../ajax';
 import config from '../../config';
 
 export default {
-  getNearbyMerchantList (longitude, latitude) {
+  getNearbyMerchantList ({ longitude, latitude }) {
     return ajax(
       `${config.API_ROOT}/shops`,
       {
@@ -12,7 +12,7 @@ export default {
       'GET'
     );
   },
-  getMerchantList (keyword, geoHash) {
+  getMerchantList ({ keyword, geoHash }) {
     return ajax(
       `${config.API_ROOT}/search_shops`,
       {

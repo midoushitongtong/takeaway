@@ -8,7 +8,7 @@ export default {
     foodCategoryList: []
   },
   mutations: {
-    [types.EDIT_FOOD_CATEGORY_LIST] (state, foodCategoryList) {
+    [types.EDIT_FOOD_CATEGORY_LIST] (state, { foodCategoryList }) {
       state.foodCategoryList = foodCategoryList;
     }
   },
@@ -18,7 +18,7 @@ export default {
       const result = await api.food.getFoodCategoryList();
       // 提交 mutations
       if (result.code === 0) {
-        commit(types.EDIT_FOOD_CATEGORY_LIST, result.data);
+        commit(types.EDIT_FOOD_CATEGORY_LIST, { foodCategoryList: result.data });
       } else {
         console.log('获取信息失败!');
       }

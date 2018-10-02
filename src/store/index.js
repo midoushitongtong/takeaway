@@ -5,6 +5,7 @@ import common from './common';
 import food from './food';
 import merchant from './merchant';
 import account from './account';
+import cart from './cart';
 
 Vue.use(Vuex);
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     common,
     food,
     merchant,
-    account
+    account,
+    cart
   }
 });

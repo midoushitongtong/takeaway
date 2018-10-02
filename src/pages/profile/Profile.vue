@@ -86,7 +86,7 @@ export default {
           // 请求退出
           const result = await api.account.signOut();
           if (result.code === 0) {
-            this.editUserInfo({});
+            this.editUserInfo({ userInfo: {} });
             Toast('退出成功');
           }
         },

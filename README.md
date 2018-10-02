@@ -20,7 +20,9 @@
   + App.vue `根组件`
   + main.js `入口文件`
 
-### mint
+### 知识点
 - 按需加载
   npm install babel-plugin-component -D
 
+- 动态的添加数据
+  Vue.set(obj, 'k', 'v');
