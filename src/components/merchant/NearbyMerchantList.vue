@@ -54,7 +54,7 @@ export default {
   },
   data () {
     return {
-      baseImageURL: 'http://owoccema2.bkt.clouddn.com/show/MintShop/'
+      baseImageURL: 'http://cangdu.org:8001/img/'
     };
   },
   computed: {

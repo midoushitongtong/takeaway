@@ -4,7 +4,7 @@ import config from '../../config';
 export default {
   getNearbyMerchantList ({ longitude, latitude }) {
     return ajax(
-      `${config.API_ROOT}/shops`,
+      `${config.API_ROOT}/common/nearbyMerchant`,
       {
         longitude,
         latitude
@@ -12,33 +12,33 @@ export default {
       'GET'
     );
   },
-  getMerchantList ({ keyword, geoHash }) {
+  getMerchantList ({ keyword, geohash }) {
     return ajax(
-      `${config.API_ROOT}/search_shops`,
+      `${config.API_ROOT}/search/merchant`,
       {
         keyword,
-        geoHash
+        geohash
       },
       'GET'
     );
   },
   getMerchantInfo () {
     return ajax(
-      `http://localhost:3000/merchantInfo`,
+      `http://localhost:3000/merchant/info`,
       {},
       'GET'
     );
   },
   getMerchantFoodList () {
     return ajax(
-      `http://localhost:3000/merchantFoodList`,
+      `http://localhost:3000/merchant/food`,
       {},
       'GET'
     );
   },
   getMerchantRatingList () {
     return ajax(
-      `http://localhost:3000/merchantRatingList`,
+      `http://localhost:3000/merchant/rating`,
       {},
       'GET'
     );

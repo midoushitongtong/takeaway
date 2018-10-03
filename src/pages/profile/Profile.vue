@@ -3,7 +3,7 @@
     <header-nav title="我的"/>
     <section class="no-sign-in-container">
       <router-link class="user-info"
-                   :to="userInfo._id ? '/profileDetail' : '/signIn'"
+                   :to="userInfo.id ? '/profileDetail' : '/signIn'"
       >
         <i class="material-icons" style="width: 85px;height: 85px;">person</i>
         <section class="action-tooltip">
@@ -50,7 +50,7 @@
       </a>
     </section>
     <mt-button type="danger" size="large"
-               v-if="userInfo._id"
+               v-if="userInfo.id"
                @click="signOut"
     >退出登陆
     </mt-button>

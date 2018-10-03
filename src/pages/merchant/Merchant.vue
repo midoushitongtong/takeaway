@@ -4,19 +4,24 @@
     <div class="tab-container">
       <router-link class="tab-item"
                    to="/merchant/foods"
+                   replace
       >点餐
       </router-link>
       <router-link class="tab-item"
                    to="/merchant/ratings"
+                   replace
       >评价
       </router-link>
       <router-link class="tab-item"
                    to="/merchant/info"
+                   replace
       >信息
       </router-link>
     </div>
     <transition :name="transitionName">
-      <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
     </transition>
   </section>
 </template>

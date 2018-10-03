@@ -18,6 +18,7 @@ export default {
 <style lang="scss">
   $height: 45px;
   .header-container {
+    z-index: 111;
     display: flex;
     align-items: center;
     position: fixed;

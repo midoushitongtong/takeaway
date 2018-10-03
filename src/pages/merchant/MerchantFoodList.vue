@@ -28,7 +28,8 @@
                @click="showFoodDetail(food)"
             >
               <div class="food-img">
-                <img :src="food.icon">
+                <img
+                  v-lazy="food.icon">
               </div>
               <div class="food-info">
                 <p class="food-name">{{ food.name }}</p>

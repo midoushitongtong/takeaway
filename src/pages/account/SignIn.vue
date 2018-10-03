@@ -27,7 +27,7 @@
             </button>
           </div>
           <div>
-            <input type="text" placeholder="验证码"
+            <input type="text" placeholder="验证码 随便填6位数字"
                    v-model="phoneCaptcha"
             >
           </div>
@@ -48,15 +48,6 @@
             <input type="text" placeholder="密码"
                    v-model="password"
                    v-show="showPassword"
-            >
-          </div>
-          <div class="image-captcha">
-            <input type="text" placeholder="验证码"
-                   v-model="imageCaptcha"
-            >
-            <img src="http://127.0.0.1:4000/captcha"
-                 ref="imageCaptcha"
-                 @click="refreshImageCaptcha"
             >
           </div>
         </section>
@@ -96,7 +87,6 @@ export default {
       phoneCaptcha: '',
       username: 'aaa',
       password: '123',
-      imageCaptcha: '',
 
       showAlertTooltipFlag: false,
       alertText: ''
@@ -107,13 +97,9 @@ export default {
       return /^\d{11}$/.test(this.phone);
     }
   },
-  mounted () {
-    // 刷新验证码
-    this.refreshImageCaptcha();
-  },
   methods: {
     ...mapActions('account', [
-      'editUserInfo'
+      'asyncInitUserInfo'
     ]),
     showAlertTooltip (alertText) {
       this.showAlertTooltipFlag = true;
@@ -144,9 +130,6 @@ export default {
         clearInterval(this.interval01);
       }
     },
-    refreshImageCaptcha () {
-      this.$refs.imageCaptcha.setAttribute('src', 'http://127.0.0.1:4000/captcha?r' + Date.now());
-    },
     async signIn () {
       let result;
 
@@ -160,7 +143,7 @@ export default {
             return;
           } else if (!/^\d{6}$/.test(phoneCaptcha)) {
             // 验证码不正确
-            this.showAlertTooltip('验证码不正确');
+            this.showAlertTooltip('验证码必须为六位');
             return;
           }
 
@@ -170,20 +153,17 @@ export default {
           break;
         // 2 代表用户名密码登陆
         case 2:
-          const { username, password, imageCaptcha } = this;
+          const { username, password } = this;
           if (!username) {
             this.showAlertTooltip('用户名不能为空');
             return;
           } else if (!password) {
             this.showAlertTooltip('密码不能为空');
             return;
-          } else if (!imageCaptcha) {
-            this.showAlertTooltip('验证码不能为空');
-            return;
           }
 
           // 登陆
-          result = await api.account.signInType2(username, password, imageCaptcha);
+          result = await api.account.signInType2(username, password);
 
           break;
       }
@@ -197,7 +177,7 @@ export default {
       // 处理登陆结果
       if (result.code === 0) {
         // 保存用户登陆状态
-        this.editUserInfo({ userInfo: result.data });
+        await this.asyncInitUserInfo();
         // 跳转个人中心
         this.$router.replace('/profile');
       } else {

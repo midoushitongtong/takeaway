@@ -17,7 +17,7 @@
           v-if="cartList.length"
         >¥{{ countPrice }}</span>
         <span class="condition"
-          v-if="cartList.length"
+              v-if="cartList.length"
         >配送费¥{{  merchantInfo.deliveryPrice }}</span>
         <span v-else>未选购商品</span>
       </span>
@@ -34,16 +34,18 @@
           @click="clearCartList"
         >清空</span>
       </div>
-      <div class="cart-list"
-      >
-        <div class="cart-item"
-             v-for="(cart, index) in cartList"
-             :key="index"
+      <div class="cart-list-container">
+        <div class="cart-list"
         >
-          <span>{{ cart.food.name }}</span>
-          <cart-control
-            :food="cart.food"
-          />
+          <div class="cart-item"
+               v-for="(cart, index) in cartList"
+               :key="index"
+          >
+            <span>{{ cart.food.name }}</span>
+            <cart-control
+              :food="cart.food"
+            />
+          </div>
         </div>
       </div>
     </mt-popup>
@@ -51,9 +53,12 @@
 </template>
 
 <script>
+import { MessageBox } from 'mint-ui';
+import BScroll from 'better-scroll';
 import { mapState, mapActions, mapGetters } from 'vuex';
 import CartControl from '../../components/cart/CartControl';
 
+/* eslint-disable no-new */
 export default {
   name: 'MerchantCart',
   components: {
@@ -98,11 +103,25 @@ export default {
     toggleShowCartList () {
       if (this.cartList.length) {
         this.showCartListFlag = !this.showCartListFlag;
+        this.$nextTick(() => {
+          if (!this.cartListContainerScroll) {
+            this.cartListContainerScroll = new BScroll('.cart-list-container', {
+              scrollY: true,
+              click: true
+            });
+          } else {
+            this.cartListContainerScroll.refresh();
+          }
+        });
       }
     },
     clearCartList () {
-      this.editCartList({ cartList: [] });
-      this.showCartListFlag = false;
+      MessageBox.confirm('确定清空？').then(action => {
+        this.editCartList({ cartList: [] });
+        this.showCartListFlag = false;
+      }).catch(action => {
+        console.log('c');
+      });
     }
   }
 };
@@ -180,7 +199,7 @@ export default {
   .cart-info-container {
     z-index: 10;
     width: 100%;
-    padding-bottom: 90px;
+    padding-bottom: 69px;
     .cart-status {
       display: flex;
       justify-content: space-between;
@@ -189,15 +208,19 @@ export default {
       height: 25px;
       background-color: #e3e3e3;
     }
-    .cart-list {
-      .cart-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        padding: 20px;
-        .cart-control {
-          position: static;
+    .cart-list-container {
+      overflow: hidden;
+      max-height: 300px;
+      .cart-list {
+        .cart-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: relative;
+          padding: 20px;
+          .cart-control {
+            position: static;
+          }
         }
       }
     }

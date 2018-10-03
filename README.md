@@ -26,3 +26,7 @@
 
 - 动态的添加数据
   Vue.set(obj, 'k', 'v');
+
+- 路由懒加载
+  https://router.vuejs.org/zh/guide/advanced/lazy-loading.html
+  

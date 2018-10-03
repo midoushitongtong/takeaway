@@ -1,14 +1,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../pages/home/Home';
-import Search from '../pages/search/Search';
-import Order from '../pages/order/Order';
-import Profile from '../pages/profile/Profile';
+
 import SignIn from '../pages/account/SignIn';
 import Merchant from '../pages/merchant/Merchant';
 import MerchantFoodList from '../pages/merchant/MerchantFoodList';
 import MerchantRatingList from '../pages/merchant/MerchantRatingList';
 import MerchantInfo from '../pages/merchant/MerchantInfo';
+
+const Home = () => import('../pages/home/Home');
+const Search = () => import('../pages/search/Search');
+const Order = () => import('../pages/order/Order');
+const Profile = () => import('../pages/profile/Profile');
 
 // 注入 vue-router 插件
 Vue.use(VueRouter);

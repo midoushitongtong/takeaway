@@ -4,7 +4,7 @@ import config from '../../config';
 export default {
   getAddress ({ geoHash }) {
     return ajax(
-      `${config.API_ROOT}/position/${geoHash}`,
+      `${config.API_ROOT}/common/address/${geoHash}`,
       {},
       'GET'
     );
