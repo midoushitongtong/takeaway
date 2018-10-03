@@ -1,11 +1,30 @@
 # takeaway
+### 运行
+- 安装
+```shell
+/> npm install
+```
+- 开启服务端
+```shell
+/src/mock> node json-server.js
+```
+- 开启客户端
+```shell
+/> npm run serve
+```
+
 ### 项目开发准备
 - 项目描述
+  - 外卖练习项目
 - 主要的功能
-- 主要的技术
-- spa 应用
-- 采用模块化(ES6 babel)/工程化(webpack, eslint, scss)开发
+  - 登陆注册/搜索/食品分类/附件商家/商家食物列表/商家的评论/商家信息
+- 技术栈
+  - Vue 全家桶
+- 开发的模式
+  - spa 应用
+  - 采用模块化(ES6 babel)/工程化(webpack, eslint, scss)开发
 - API 接口
+  - json-server 模拟
 
 ### 目录结构
 - src
@@ -16,7 +35,7 @@
   + store `vuex的模块`
   + api `与后台交互的模块`
   + filters `过滤器的模块`
-  + mock `模拟数据接口的模块`
+  + mock `模拟数据接口`
   + App.vue `根组件`
   + main.js `入口文件`
 

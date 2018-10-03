@@ -2,7 +2,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import SignIn from '../pages/account/SignIn';
-import Merchant from '../pages/merchant/Merchant';
 import MerchantFoodList from '../pages/merchant/MerchantFoodList';
 import MerchantRatingList from '../pages/merchant/MerchantRatingList';
 import MerchantInfo from '../pages/merchant/MerchantInfo';
@@ -11,6 +10,7 @@ const Home = () => import('../pages/home/Home');
 const Search = () => import('../pages/search/Search');
 const Order = () => import('../pages/order/Order');
 const Profile = () => import('../pages/profile/Profile');
+const Merchant = () => import('../pages/merchant/Merchant');
 
 // 注入 vue-router 插件
 Vue.use(VueRouter);

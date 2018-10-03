@@ -24,21 +24,21 @@ export default {
   },
   getMerchantInfo () {
     return ajax(
-      `http://localhost:3000/merchant/info`,
+      `${config.API_ROOT}/merchant/info`,
       {},
       'GET'
     );
   },
   getMerchantFoodList () {
     return ajax(
-      `http://localhost:3000/merchant/food`,
+      `${config.API_ROOT}/merchant/food`,
       {},
       'GET'
     );
   },
   getMerchantRatingList () {
     return ajax(
-      `http://localhost:3000/merchant/rating`,
+      `${config.API_ROOT}/merchant/rating`,
       {},
       'GET'
     );
