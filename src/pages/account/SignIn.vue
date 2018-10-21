@@ -28,8 +28,7 @@
           </div>
           <div>
             <input type="text" placeholder="验证码 随便填6位数字"
-                   v-model="phoneCaptcha"
-            >
+                   v-model="phoneCaptcha">
           </div>
         </section>
         <section
@@ -75,7 +74,7 @@ export default {
   components: {
     AlertTooltip
   },
-  data () {
+  data() {
     return {
       // 1 代表短信登陆
       // 2 代表用户名密码登陆
@@ -93,23 +92,21 @@ export default {
     };
   },
   computed: {
-    rightPhone () {
+    rightPhone() {
       return /^\d{11}$/.test(this.phone);
     }
   },
   methods: {
-    ...mapActions('account', [
-      'asyncInitUserInfo'
-    ]),
-    showAlertTooltip (alertText) {
+    ...mapActions('account', ['asyncInitUserInfo']),
+    showAlertTooltip(alertText) {
       this.showAlertTooltipFlag = true;
       this.alertText = alertText;
     },
-    closeAlertTooltip () {
+    closeAlertTooltip() {
       this.showAlertTooltipFlag = false;
       this.alertText = '';
     },
-    async sendPhoneCaptcha () {
+    async sendPhoneCaptcha() {
       if (this.sendPhoneCaptchaCountdown > 0) {
         return;
       }
@@ -130,7 +127,7 @@ export default {
         clearInterval(this.interval01);
       }
     },
-    async signIn () {
+    async signIn() {
       let result;
 
       switch (this.signInType) {
@@ -189,75 +186,75 @@ export default {
 </script>
 
 <style lang="scss">
-  .login-container {
-    height: 100vh;
-    background-color: #fff;
-    .container {
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
+.login-container {
+  height: 100vh;
+  background-color: #fff;
+  .container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .action {
+    padding: 5vh 20px;
+    text-align: center;
+    a {
+      font-size: 20px;
+      color: #333;
     }
-    .action {
-      padding: 5vh 20px;
-      text-align: center;
-      a {
-        font-size: 20px;
-        color: #333;
-      }
-      a:first-child {
-        margin-right: 20px;
-      }
-      a.active {
-        padding-bottom: 5px;
-        border-bottom: 3px solid #06f;
-        color: #06f;
-      }
+    a:first-child {
+      margin-right: 20px;
     }
-    .form-container {
-      section {
-        display: none;
-      }
-      section.active {
-        display: block;
-        div {
-          position: relative;
-          margin-bottom: 15px;
-          input {
-            width: 100%;
-            padding: 13px 6px;
-            border: 1px solid #e5e5e5;
-            box-sizing: border-box;
-          }
-          .send-phone-captcha {
-            position: absolute;
-            top: 50%;
-            right: 5px;
-            border: 0;
-            transform: translateY(-50%);
-            background-color: #fff;
-            color: #e1e1e1;
-            outline: none;
-          }
-          .right-phone {
-            color: #333;
-          }
-        }
-        .image-captcha img {
-          position: absolute;
-          right: 0;
-          bottom: 0;
-          cursor: pointer;
-          outline: none;
-        }
-      }
-      .sign-in {
-        width: 100%;
-        padding: 15px 5px;
-        border: 1px solid #06f;
-        background-color: #06f;
-        color: #fff;
-        cursor: pointer;
-      }
+    a.active {
+      padding-bottom: 5px;
+      border-bottom: 3px solid #06f;
+      color: #06f;
     }
   }
+  .form-container {
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+      div {
+        position: relative;
+        margin-bottom: 15px;
+        input {
+          width: 100%;
+          padding: 13px 6px;
+          border: 1px solid #e5e5e5;
+          box-sizing: border-box;
+        }
+        .send-phone-captcha {
+          position: absolute;
+          top: 50%;
+          right: 5px;
+          border: 0;
+          transform: translateY(-50%);
+          background-color: #fff;
+          color: #e1e1e1;
+          outline: none;
+        }
+        .right-phone {
+          color: #333;
+        }
+      }
+      .image-captcha img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+    .sign-in {
+      width: 100%;
+      padding: 15px 5px;
+      border: 1px solid #06f;
+      background-color: #06f;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
 </style>

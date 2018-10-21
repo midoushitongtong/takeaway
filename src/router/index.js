@@ -17,6 +17,7 @@ Vue.use(VueRouter);
 
 // 导出路由模块
 export default new VueRouter({
+  base: '/takeaway',
   mode: 'history',
   linkActiveClass: 'active',
   routes: [

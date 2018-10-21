@@ -2,7 +2,6 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-
 // 初始化 css 样式
 import 'normalize.css';
 // 图标库
@@ -10,7 +9,7 @@ import 'material-icons';
 // 组件库
 import { Button, Badge, Popup, Switch, Lazyload } from 'mint-ui';
 // 过滤器
-import './filters';
+import './filters/common';
 // 懒加载
 // import VueLazyLoad from 'vue-lazyload';
 // import loading from './assets/img/loading.gif';

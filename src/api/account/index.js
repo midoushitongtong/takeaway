@@ -2,7 +2,7 @@ import ajax from '../ajax';
 import config from '../../config';
 
 export default {
-  sendPhoneCaptcha (phone) {
+  sendPhoneCaptcha(phone) {
     return ajax(
       `${config.API_ROOT}/account/sendCode`,
       {
@@ -11,7 +11,7 @@ export default {
       'GET'
     );
   },
-  signInType1 (phone, code) {
+  signInType1(phone, code) {
     return ajax(
       `${config.API_ROOT}/account/signUp/1`,
       {
@@ -21,7 +21,7 @@ export default {
       'POST'
     );
   },
-  signInType2 (username, password, captcha) {
+  signInType2(username, password, captcha) {
     return ajax(
       `${config.API_ROOT}/account/signUp/2`,
       {
@@ -32,14 +32,14 @@ export default {
       'POST'
     );
   },
-  getUserInfo () {
+  getUserInfo() {
     return ajax(
       `${config.API_ROOT}/account/userInfo`,
       {},
       'GET'
     );
   },
-  signOut () {
+  signOut() {
     return ajax(
       `${config.API_ROOT}/account/logout`,
       {},
