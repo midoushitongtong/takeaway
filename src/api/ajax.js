@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 /*
   ajax 请求封装模块
  */
-export default function ajax (url, data = {}, type = 'GET') {
+export default function ajax(url, data = {}, type = 'GET') {
   return new Promise(async (resolve, reject) => {
     let response;
     try {

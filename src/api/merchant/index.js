@@ -2,7 +2,7 @@ import ajax from '../ajax';
 import config from '../../config';
 
 export default {
-  getNearbyMerchantList ({ longitude, latitude }) {
+  getNearbyMerchantList({ longitude, latitude }) {
     return ajax(
       `${config.API_ROOT}/common/nearbyMerchant`,
       {
@@ -12,7 +12,7 @@ export default {
       'GET'
     );
   },
-  getMerchantList ({ keyword, geohash }) {
+  getMerchantList({ keyword, geohash }) {
     return ajax(
       `${config.API_ROOT}/search/merchant`,
       {
@@ -22,21 +22,21 @@ export default {
       'GET'
     );
   },
-  getMerchantInfo () {
+  getMerchantInfo() {
     return ajax(
       `${config.API_ROOT}/merchant/info`,
       {},
       'GET'
     );
   },
-  getMerchantFoodList () {
+  getMerchantFoodList() {
     return ajax(
       `${config.API_ROOT}/merchant/food`,
       {},
       'GET'
     );
   },
-  getMerchantRatingList () {
+  getMerchantRatingList() {
     return ajax(
       `${config.API_ROOT}/merchant/rating`,
       {},

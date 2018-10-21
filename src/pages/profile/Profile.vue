@@ -69,18 +69,12 @@ export default {
     HeaderNav
   },
   computed: {
-    ...mapState('account', [
-      'userInfo'
-    ])
+    ...mapState('account', ['userInfo'])
   },
-  mounted () {
-
-  },
+  mounted() {},
   methods: {
-    ...mapActions('account', [
-      'editUserInfo'
-    ]),
-    async signOut () {
+    ...mapActions('account', ['editUserInfo']),
+    async signOut() {
       MessageBox.confirm('确认退出吗?').then(
         async action => {
           // 请求退出
@@ -100,71 +94,71 @@ export default {
 </script>
 
 <style lang="scss">
-  .no-sign-in-container {
-    margin-top: 45px;
-    .user-info {
-      display: flex;
-      align-items: center;
-      background: #06f;
-      padding: 10px;
-      color: #fff;
-      .material-icons {
-        font-size: 85px;
-      }
-      .action-tooltip {
-        margin-left: 20px;
-        font-size: 23px;
-      }
-    }
-  }
-
-  .account-asset-container {
+.no-sign-in-container {
+  margin-top: 45px;
+  .user-info {
     display: flex;
-    background-color: #fff;
-    div {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      border-right: 1px solid #e5e5e5;
-      text-align: center;
-      font-size: 20px;
-      color: #666;
-      p {
-        margin: 0;
-      }
-      p:first-child {
-        margin-bottom: 10px;
-        font-size: 25px;
-      }
-      .money {
-        color: #f60;
-      }
-      .preferential {
-        color: red;
-      }
-      .point {
-        color: #06f;
-      }
+    align-items: center;
+    background: #06f;
+    padding: 10px;
+    color: #fff;
+    .material-icons {
+      font-size: 85px;
+    }
+    .action-tooltip {
+      margin-left: 20px;
+      font-size: 23px;
     }
   }
+}
 
-  .function-list-group {
-    @include border-bottom-1px(#e5e5e5);
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: #fff;
-    .list-group-item {
-      @include border-bottom-1px(#e5e5e5);
-      display: flex;
-      align-items: center;
-      padding: 13px;
-      color: #666;
-      span {
-        flex: 1;
-        margin-left: 10px;
-      }
+.account-asset-container {
+  display: flex;
+  background-color: #fff;
+  div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-right: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    p {
+      margin: 0;
+    }
+    p:first-child {
+      margin-bottom: 10px;
+      font-size: 25px;
+    }
+    .money {
+      color: #f60;
+    }
+    .preferential {
+      color: red;
+    }
+    .point {
+      color: #06f;
     }
   }
+}
+
+.function-list-group {
+  @include border-bottom-1px(#e5e5e5);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  .list-group-item {
+    @include border-bottom-1px(#e5e5e5);
+    display: flex;
+    align-items: center;
+    padding: 13px;
+    color: #666;
+    span {
+      flex: 1;
+      margin-left: 10px;
+    }
+  }
+}
 </style>

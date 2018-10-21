@@ -94,179 +94,171 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'MerchantHeader',
-  data () {
+  data() {
     return {
-      supportsClass: [
-        'error',
-        'warning',
-        'primary'
-      ],
+      supportsClass: ['error', 'warning', 'primary'],
       showMerchantInfo: false,
       showMerchantSupports: false
     };
   },
   computed: {
-    ...mapState('merchant', [
-      'merchantInfo'
-    ])
+    ...mapState('merchant', ['merchantInfo'])
   },
-  mounted () {
+  mounted() {
     this.asyncEditMerchantInfo();
   },
   methods: {
-    ...mapActions('merchant', [
-      'asyncEditMerchantInfo'
-    ])
+    ...mapActions('merchant', ['asyncEditMerchantInfo'])
   }
 };
 </script>
 
 <style lang="scss">
-  .merchant-header-container {
-    margin-bottom: 13px;
-    header {
-      position: relative;
-      width: 100%;
-      height: 100px;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: 50%;
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-image: linear-gradient(rgba(0, 0, 0, .2), transparent);
-      }
-      .material-icons {
-        z-index: 1;
-        position: absolute;
-        left: 5px;
-        top: 5px;
-        font-size: 35px;
-        color: #fff;
-      }
+.merchant-header-container {
+  margin-bottom: 13px;
+  header {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
     }
-    .merchant-detail {
-      position: relative;
-      padding-top: 35px;
-      text-align: center;
-      .merchant-logo {
-        position: absolute;
-        top: -50px;
-        left: 50%;
-        width: 95px;
-        height: 95px;
-        transform: translateX(-50%);
-      }
-      .merchant-logo img {
-        width: 100%;
-      }
-      .merchant-title {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        margin: 20px 0 10px;
-        font-size: 23px;
-        .material-icons {
-          font-size: 23px;
-        }
-      }
-      .merchant-info {
-        display: flex;
-        justify-content: center;
-        margin: 0;
-        padding: 0;
-        font-size: 15px;
-        color: #555;
-        span {
-          margin-right: 10px;
-        }
-      }
-      .merchant-preferential {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin: 10px 0;
-        font-size: 15px;
-        color: #555;
-        .preferential {
-          display: flex;
-          align-items: center;
-          vertical-align: super;
-        }
-        .supports-first {
-          overflow: hidden;
-          max-width: 150px;
-          margin-left: 5px;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
-      }
+    .material-icons {
+      z-index: 1;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      font-size: 35px;
+      color: #fff;
     }
   }
-
-  .merchant-info-detail {
-    width: 80%;
-    padding: 20px;
+  .merchant-detail {
+    position: relative;
+    padding-top: 35px;
     text-align: center;
-    background-color: #fff;
-    ul {
-      list-style-type: none;
+    .merchant-logo {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      width: 95px;
+      height: 95px;
+      transform: translateX(-50%);
+    }
+    .merchant-logo img {
+      width: 100%;
+    }
+    .merchant-title {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin: 20px 0 10px;
+      font-size: 23px;
+      .material-icons {
+        font-size: 23px;
+      }
+    }
+    .merchant-info {
       display: flex;
       justify-content: center;
       margin: 0;
       padding: 0;
-      li {
-        flex: 1;
-        p:first-child {
-          font-size: 15px;
-          font-weight: 600;
-        }
-        p:last-child {
-          font-size: 15px;
-          color: #666;
-        }
-      }
-    }
-    h6 {
-      width: 100px;
-      margin: 5px auto;
-      background-image: linear-gradient(90deg, #fff, #333 50%, #fff);
-      background-size: 100% 1px;
-      background-repeat: no-repeat;
-      background-position: 50%;
+      font-size: 15px;
+      color: #555;
       span {
-        padding: 5px;
-        font-size: 16px;
-        background-color: #fff;
+        margin-right: 10px;
       }
     }
-    h5 {
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 200%;
-      text-align: left;
+    .merchant-preferential {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px 0;
+      font-size: 15px;
+      color: #555;
+      .preferential {
+        display: flex;
+        align-items: center;
+        vertical-align: super;
+      }
+      .supports-first {
+        overflow: hidden;
+        max-width: 150px;
+        margin-left: 5px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
   }
+}
 
-  .merchant-supports-detail {
-    width: 100%;
-    padding: 10px;
-    .supports-list {
-      max-height: 200px;
-      overflow-y: scroll;
-      background-color: #fff;
-      div {
-        padding: 10px 5px;
-        color: #555;
-        span:first-child {
-          margin-right: 5px;
-        }
+.merchant-info-detail {
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    li {
+      flex: 1;
+      p:first-child {
+        font-size: 15px;
+        font-weight: 600;
+      }
+      p:last-child {
+        font-size: 15px;
+        color: #666;
       }
     }
   }
+  h6 {
+    width: 100px;
+    margin: 5px auto;
+    background-image: linear-gradient(90deg, #fff, #333 50%, #fff);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    span {
+      padding: 5px;
+      font-size: 16px;
+      background-color: #fff;
+    }
+  }
+  h5 {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 200%;
+    text-align: left;
+  }
+}
+
+.merchant-supports-detail {
+  width: 100%;
+  padding: 10px;
+  .supports-list {
+    max-height: 200px;
+    overflow-y: scroll;
+    background-color: #fff;
+    div {
+      padding: 10px 5px;
+      color: #555;
+      span:first-child {
+        margin-right: 5px;
+      }
+    }
+  }
+}
 </style>

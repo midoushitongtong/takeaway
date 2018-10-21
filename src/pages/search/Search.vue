@@ -34,7 +34,7 @@ import api from '../../api';
 
 export default {
   name: 'Search',
-  data () {
+  data() {
     return {
       merchantName: '',
       searchMerchantList: []
@@ -44,7 +44,7 @@ export default {
     HeaderNav
   },
   methods: {
-    async submitSearchMerchantList () {
+    async submitSearchMerchantList() {
       if (this.merchantName === '') {
         Toast('请输入商家名称');
         return;
@@ -62,58 +62,58 @@ export default {
 </script>
 
 <style lang="scss">
-  .search-container {
-    display: flex;
-    margin-top: 45px;
-    padding: 12px 9px;
-    background-color: #fff;
-    input {
-      width: 79%;
-      height: 35px;
-      padding: 0 5px;
-      border: 3px solid #f2f2f2;
-      border-radius: 2px;
-      outline: none;
-      font-size: 13px;
-      color: #333;
-      background-color: #f2f2f2;
-    }
-    button {
-      width: 21%;
-      margin-left: 10px;
-      border: 1px solid #06f;
-      background-color: #06f;
-      color: #fff;
-      cursor: pointer;
-    }
+.search-container {
+  display: flex;
+  margin-top: 45px;
+  padding: 12px 9px;
+  background-color: #fff;
+  input {
+    width: 79%;
+    height: 35px;
+    padding: 0 5px;
+    border: 3px solid #f2f2f2;
+    border-radius: 2px;
+    outline: none;
+    font-size: 13px;
+    color: #333;
+    background-color: #f2f2f2;
   }
+  button {
+    width: 21%;
+    margin-left: 10px;
+    border: 1px solid #06f;
+    background-color: #06f;
+    color: #fff;
+    cursor: pointer;
+  }
+}
 
-  .search-result-container {
-    background-color: #fff;
-    .merchant-list {
-      list-style-type: none;
-      padding: 0;
-      .merchant-item {
-        @include border-bottom-1px(#e5e5e5);
-        display: flex;
-        padding: 10px;
-        .merchant-logo {
-          width: 80px;
-          height: 80px;
-          img {
-            width: 100%;
-            height: 100%;
-          }
+.search-result-container {
+  background-color: #fff;
+  .merchant-list {
+    list-style-type: none;
+    padding: 0;
+    .merchant-item {
+      @include border-bottom-1px(#e5e5e5);
+      display: flex;
+      padding: 10px;
+      .merchant-logo {
+        width: 80px;
+        height: 80px;
+        img {
+          width: 100%;
+          height: 100%;
         }
-        .merchant-info {
-          padding-left: 13px;
-          font-size: 15px;
-          color: #666;
-          p {
-            margin: 0 0 10px;
-          }
+      }
+      .merchant-info {
+        padding-left: 13px;
+        font-size: 15px;
+        color: #666;
+        p {
+          margin: 0 0 10px;
         }
       }
     }
   }
+}
 </style>

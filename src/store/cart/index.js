@@ -6,7 +6,7 @@ export default {
     cartList: window.localStorage.getItem('cart') !== null ? JSON.parse(window.localStorage.getItem('cart')) : []
   },
   mutations: {
-    [types.INCREMENT_CART_COUNT] (state, { food }) {
+    [types.INCREMENT_CART_COUNT](state, { food }) {
       const itemIndex = state.cartList.findIndex(item => {
         return item.food.name === food.name;
       });
@@ -19,7 +19,7 @@ export default {
         });
       }
     },
-    [types.DECREMENT_CART_COUNT] (state, { food }) {
+    [types.DECREMENT_CART_COUNT](state, { food }) {
       const itemIndex = state.cartList.findIndex(item => {
         return item.food.name === food.name;
       });
@@ -35,12 +35,12 @@ export default {
         }
       }
     },
-    [types.EDIT_CART_LIST] (state, { cartList }) {
+    [types.EDIT_CART_LIST](state, { cartList }) {
       state.cartList = cartList;
     }
   },
   actions: {
-    editCartCount ({ commit, state }, { isIncrement, food }) {
+    editCartCount({ commit, state }, { isIncrement, food }) {
       if (isIncrement) {
         commit(types.INCREMENT_CART_COUNT, { food });
       } else {
@@ -48,12 +48,12 @@ export default {
       }
       window.localStorage.setItem('cart', JSON.stringify(state.cartList));
     },
-    editCartList ({ commit }, { cartList }) {
+    editCartList({ commit }, { cartList }) {
       commit(types.EDIT_CART_LIST, { cartList });
     }
   },
   getters: {
-    countPrice (state) {
+    countPrice(state) {
       return state.cartList.reduce((pre, item) => {
         return pre + item.count * item.food.price;
       }, 0);

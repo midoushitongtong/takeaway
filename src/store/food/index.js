@@ -8,12 +8,12 @@ export default {
     foodCategoryList: []
   },
   mutations: {
-    [types.EDIT_FOOD_CATEGORY_LIST] (state, { foodCategoryList }) {
+    [types.EDIT_FOOD_CATEGORY_LIST](state, { foodCategoryList }) {
       state.foodCategoryList = foodCategoryList;
     }
   },
   actions: {
-    async asyncEditFoodCategoryList ({ commit }) {
+    async asyncEditFoodCategoryList({ commit }) {
       // 异步获取数据
       const result = await api.food.getFoodCategoryList();
       // 提交 mutations

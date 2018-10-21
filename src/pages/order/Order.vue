@@ -20,21 +20,21 @@ export default {
 </script>
 
 <style lang="scss">
-  .order-no-sign-in {
-    width: 65%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 26vw;
-    button {
-      padding: 10px;
-      border: 1px solid #06f;
-      background-color: #06f;
-      text-align: center;
-      color: #fff;
-      cursor: pointer;
-    }
+.order-no-sign-in {
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 26vw;
+  button {
+    padding: 10px;
+    border: 1px solid #06f;
+    background-color: #06f;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
   }
+}
 </style>

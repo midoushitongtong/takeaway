@@ -76,7 +76,7 @@ export default {
     MerchantCart,
     FoodDetail
   },
-  data () {
+  data() {
     return {
       food: {},
       merchantFoodListItemActiveIndexFlag: true,
@@ -85,47 +85,48 @@ export default {
     };
   },
   computed: {
-    ...mapState('merchant', [
-      'merchantFoodList'
-    ])
+    ...mapState('merchant', ['merchantFoodList'])
   },
-  async mounted () {
+  async mounted() {
     await this.asyncEditMerchantFoodList();
     this.$nextTick(() => {
       this._initScroll();
     });
   },
   methods: {
-    ...mapActions('merchant', [
-      'asyncEditMerchantFoodList'
-    ]),
-    showFoodDetail (food) {
+    ...mapActions('merchant', ['asyncEditMerchantFoodList']),
+    showFoodDetail(food) {
       this.food = food;
       this.$refs.foodDetail.toggleShowFoodDetail();
     },
-    _initScroll () {
+    _initScroll() {
       // 食品的分类
       new BScroll('.merchant-food-category-container', {
         scrollY: true,
         click: true
       });
       // 食品的列表
-      let merchantFoodContainerScroll = this.merchantFoodContainerScroll = new BScroll('.merchant-food-container', {
-        scrollY: true,
-        click: true,
-        probeType: 3,
-        swipeTime: 1500
-      });
+      let merchantFoodContainerScroll = (this.merchantFoodContainerScroll = new BScroll(
+        '.merchant-food-container',
+        {
+          scrollY: true,
+          click: true,
+          probeType: 3,
+          swipeTime: 1500
+        }
+      ));
 
       const merchantFoodListItem = this.$refs.foodList.children;
-      let handlerScroll = (y) => {
+      let handlerScroll = y => {
         if (!this.merchantFoodListItemActiveIndexFlag) return;
         let index = 0;
-        Array.prototype.slice.call(merchantFoodListItem).forEach((item, key) => {
-          if (y >= item.offsetTop) {
-            index = key;
-          }
-        });
+        Array.prototype.slice
+          .call(merchantFoodListItem)
+          .forEach((item, key) => {
+            if (y >= item.offsetTop) {
+              index = key;
+            }
+          });
         this.merchantFoodListItemActiveIndex = index;
       };
       merchantFoodContainerScroll.on('scroll', ({ y }) => {
@@ -136,99 +137,103 @@ export default {
         this.merchantFoodListItemActiveIndexFlag = true;
       });
     },
-    handlerMerchantFoodCategoryItem (index) {
+    handlerMerchantFoodCategoryItem(index) {
       this.merchantFoodListItemActiveIndex = index;
       this.merchantFoodListItemActiveIndexFlag = false;
-      this.merchantFoodContainerScroll.scrollTo(0, -this.$refs.foodList.children[index].offsetTop, 500);
+      this.merchantFoodContainerScroll.scrollTo(
+        0,
+        -this.$refs.foodList.children[index].offsetTop,
+        500
+      );
     }
   }
 };
 </script>
 
 <style lang="scss">
-  .merchant-food-list-container {
-    overflow: hidden;
-    display: flex;
-    position: absolute;
-    top: 317px;
-    bottom: 50px;
-    width: 100%;
-    background-color: #fff;
-    .merchant-food-category-container {
-      width: 105px;
-      padding-top: 0;
-      a {
-        display: block;
-        padding: 20px;
-        text-align: left;
+.merchant-food-list-container {
+  overflow: hidden;
+  display: flex;
+  position: absolute;
+  top: 317px;
+  bottom: 50px;
+  width: 100%;
+  background-color: #fff;
+  .merchant-food-category-container {
+    width: 105px;
+    padding-top: 0;
+    a {
+      display: block;
+      padding: 20px;
+      text-align: left;
+      color: #666;
+    }
+    a.active {
+      color: #06f;
+    }
+  }
+  .merchant-food-container {
+    flex: 1;
+    .food-item {
+      .food-category-name {
+        padding: 9px;
+        margin: 0;
+        border-left: 3px solid #ddd;
+        font-size: 13px;
+        background-color: #e9e9e9;
         color: #666;
       }
-      a.active {
-        color: #06f;
-      }
-    }
-    .merchant-food-container {
-      flex: 1;
-      .food-item {
-        .food-category-name {
-          padding: 9px;
-          margin: 0;
-          border-left: 3px solid #ddd;
-          font-size: 13px;
-          background-color: #e9e9e9;
-          color: #666;
+      .food-list-container {
+        .food {
+          @include border-bottom-1px(#e3e3e3);
+          position: relative;
+          display: flex;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          .food-img {
+            width: 75px;
+            height: 75px;
+            img {
+              max-width: 100%;
+            }
+          }
+          .food-info {
+            flex: 1;
+            padding-left: 10px;
+            font-size: 13px;
+            color: #666;
+            p {
+              margin: 0 0 10px;
+            }
+            .food-name {
+              font-size: 15px;
+              color: #000;
+            }
+            .food-price {
+              .now {
+                font-weight: bold;
+                color: #f60;
+              }
+              .old {
+                margin-left: 5px;
+                font-size: 9px;
+                text-decoration: line-through;
+                color: #666;
+              }
+            }
+            .food-rating {
+              display: flex;
+              span:first-child {
+                margin-right: 15px;
+              }
+            }
+          }
         }
-        .food-list-container {
-          .food {
-            @include border-bottom-1px(#e3e3e3);
-            position: relative;
-            display: flex;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            .food-img {
-              width: 75px;
-              height: 75px;
-              img {
-                max-width: 100%;
-              }
-            }
-            .food-info {
-              flex: 1;
-              padding-left: 10px;
-              font-size: 13px;
-              color: #666;
-              p {
-                margin: 0 0 10px;
-              }
-              .food-name {
-                font-size: 15px;
-                color: #000;
-              }
-              .food-price {
-                .now {
-                  font-weight: bold;
-                  color: #f60;
-                }
-                .old {
-                  margin-left: 5px;
-                  font-size: 9px;
-                  text-decoration: line-through;
-                  color: #666;
-                }
-              }
-              .food-rating {
-                display: flex;
-                span:first-child {
-                  margin-right: 15px;
-                }
-              }
-            }
-          }
-          .food:last-child::after {
-            height: 0;
-          }
+        .food:last-child::after {
+          height: 0;
         }
       }
     }
   }
+}
 </style>

@@ -64,22 +64,16 @@ export default {
   components: {
     CartControl
   },
-  data () {
+  data() {
     return {
       showCartListFlag: false
     };
   },
   computed: {
-    ...mapState('merchant', [
-      'merchantInfo'
-    ]),
-    ...mapState('cart', [
-      'cartList'
-    ]),
-    ...mapGetters('cart', [
-      'countPrice'
-    ]),
-    cartStatus () {
+    ...mapState('merchant', ['merchantInfo']),
+    ...mapState('cart', ['cartList']),
+    ...mapGetters('cart', ['countPrice']),
+    cartStatus() {
       if (this.countPrice === 0) {
         return `¥${this.merchantInfo.minPrice}元起送`;
       } else if (this.merchantInfo.minPrice > this.countPrice) {
@@ -90,17 +84,15 @@ export default {
     }
   },
   watch: {
-    cartList (val) {
+    cartList(val) {
       if (val.length === 0) {
         this.showCartListFlag = false;
       }
     }
   },
   methods: {
-    ...mapActions('cart', [
-      'editCartList'
-    ]),
-    toggleShowCartList () {
+    ...mapActions('cart', ['editCartList']),
+    toggleShowCartList() {
       if (this.cartList.length) {
         this.showCartListFlag = !this.showCartListFlag;
         this.$nextTick(() => {
@@ -115,114 +107,116 @@ export default {
         });
       }
     },
-    clearCartList () {
-      MessageBox.confirm('确定清空？').then(action => {
-        this.editCartList({ cartList: [] });
-        this.showCartListFlag = false;
-      }).catch(action => {
-        console.log('c');
-      });
+    clearCartList() {
+      MessageBox.confirm('确定清空？')
+        .then(action => {
+          this.editCartList({ cartList: [] });
+          this.showCartListFlag = false;
+        })
+        .catch(action => {
+          console.log('c');
+        });
     }
   }
 };
 </script>
 
 <style lang="scss">
-  .merchant-cart-container {
-    z-index: 9999;
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #2a2626;
-    &.active {
-      .icon {
-        background-color: #06f;
-      }
-      button {
-        border-color: #06f;
-        background-color: #06f;
-      }
-    }
+.merchant-cart-container {
+  z-index: 9999;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #2a2626;
+  &.active {
     .icon {
-      z-index: 1;
+      background-color: #06f;
+    }
+    button {
+      border-color: #06f;
+      background-color: #06f;
+    }
+  }
+  .icon {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #555;
+    box-shadow: 0 0 0 5px #2a2626;
+    .badge {
       display: flex;
       justify-content: center;
       align-items: center;
       position: absolute;
       top: -10px;
-      left: 20px;
-      width: 50px;
-      height: 50px;
+      right: -10px;
+      width: 15px;
+      height: 15px;
+      padding: 5px;
       border-radius: 50%;
-      color: #fff;
-      background-color: #555;
-      box-shadow: 0 0 0 5px #2a2626;
-      .badge {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        width: 15px;
-        height: 15px;
-        padding: 5px;
-        border-radius: 50%;
-        background-color: #f60;
-      }
-    }
-    .cart-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding-top: 5px;
-      padding-left: 90px;
-      color: #fff;
-      span.condition {
-        margin-top: 5px;
-        font-size: 13px;
-        color: #ddd;
-      }
-    }
-    button {
-      width: 105px;
-      border: 1px solid #555;
-      background-color: #555;
-      font-size: 13px;
-      color: #fff;
+      background-color: #f60;
     }
   }
-
-  .cart-info-container {
-    z-index: 10;
-    width: 100%;
-    padding-bottom: 69px;
-    .cart-status {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      height: 25px;
-      background-color: #e3e3e3;
+  .cart-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-left: 90px;
+    color: #fff;
+    span.condition {
+      margin-top: 5px;
+      font-size: 13px;
+      color: #ddd;
     }
-    .cart-list-container {
-      overflow: hidden;
-      max-height: 300px;
-      .cart-list {
-        .cart-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          position: relative;
-          padding: 20px;
-          .cart-control {
-            position: static;
-          }
+  }
+  button {
+    width: 105px;
+    border: 1px solid #555;
+    background-color: #555;
+    font-size: 13px;
+    color: #fff;
+  }
+}
+
+.cart-info-container {
+  z-index: 10;
+  width: 100%;
+  padding-bottom: 69px;
+  .cart-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 25px;
+    background-color: #e3e3e3;
+  }
+  .cart-list-container {
+    overflow: hidden;
+    max-height: 300px;
+    .cart-list {
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        padding: 20px;
+        .cart-control {
+          position: static;
         }
       }
     }
   }
+}
 </style>

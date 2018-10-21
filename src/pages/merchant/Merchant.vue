@@ -31,7 +31,7 @@ import MerchantHeader from '../../components/merchant/MerchantHeader';
 
 export default {
   name: 'Merchant',
-  data () {
+  data() {
     return {
       transitionName: ''
     };
@@ -40,7 +40,7 @@ export default {
     MerchantHeader
   },
   watch: {
-    $route (to, from) {
+    $route(to, from) {
       if (to.meta.index > from.meta.index) {
         this.transitionName = 'slide-left';
       } else {
@@ -48,62 +48,61 @@ export default {
       }
     }
   }
-
 };
 </script>
 
 <style lang="scss">
-  .slide-left-enter-active,
-  .slide-left-leave-active,
-  .slide-right-enter-active,
-  .slide-right-leave-active {
-    position: absolute;
-    will-change: transform;
-    transition: transform .5s;
-  }
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  position: absolute;
+  will-change: transform;
+  transition: transform 0.5s;
+}
 
-  .slide-left-enter {
-    transform: translate3d(510%, 0, 0);
-  }
+.slide-left-enter {
+  transform: translate3d(510%, 0, 0);
+}
 
-  .slide-left-leave-active {
-    transform: translate3d(-510%, 0, 0);
-  }
+.slide-left-leave-active {
+  transform: translate3d(-510%, 0, 0);
+}
 
-  .slide-right-enter {
-    transform: translate3d(-510%, 0, 0);
-  }
+.slide-right-enter {
+  transform: translate3d(-510%, 0, 0);
+}
 
-  .slide-right-leave-active {
-    transform: translate3d(510%, 0, 0);
-  }
+.slide-right-leave-active {
+  transform: translate3d(510%, 0, 0);
+}
 
-  .merchant {
-    height: 100vh;
-    background-color: #fff;
-  }
+.merchant {
+  height: 100vh;
+  background-color: #fff;
+}
 
-  .tab-container {
-    @include border-bottom-1px(#e5e5e5);
-    display: flex;
-    justify-content: space-around;
+.tab-container {
+  @include border-bottom-1px(#e5e5e5);
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 15px;
+  .tab-item {
+    display: block;
+    width: 100%;
+    padding-top: 15px;
     padding-bottom: 15px;
-    .tab-item {
-      display: block;
-      width: 100%;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      text-align: center;
-      color: #666;
-    }
-    .tab-item.active {
-      color: #06f;
-      @include border-bottom-1px(#06f);
-    }
-    .tab-item.active::after {
-      width: 50%;
-      height: 2px;
-      transform: translateX(50%);
-    }
+    text-align: center;
+    color: #666;
   }
+  .tab-item.active {
+    color: #06f;
+    @include border-bottom-1px(#06f);
+  }
+  .tab-item.active::after {
+    width: 50%;
+    height: 2px;
+    transform: translateX(50%);
+  }
+}
 </style>

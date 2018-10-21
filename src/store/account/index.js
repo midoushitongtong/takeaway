@@ -7,16 +7,16 @@ export default {
     userInfo: {}
   },
   mutations: {
-    [types.EDIT_USER_INFO] (state, { userInfo }) {
+    [types.EDIT_USER_INFO](state, { userInfo }) {
       state.userInfo = userInfo;
     }
   },
   actions: {
-    editUserInfo ({ commit }, { userInfo }) {
+    editUserInfo({ commit }, { userInfo }) {
       console.log(userInfo);
       commit(types.EDIT_USER_INFO, { userInfo });
     },
-    async asyncInitUserInfo ({ commit }) {
+    async asyncInitUserInfo({ commit }) {
       const result = await api.account.getUserInfo();
       if (result.code === 0) {
         commit(types.EDIT_USER_INFO, { userInfo: result.data });

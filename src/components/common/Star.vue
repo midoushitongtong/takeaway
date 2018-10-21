@@ -22,23 +22,23 @@ export default {
 </script>
 
 <style lang="scss">
-  .start-container {
-    position: relative;
-    overflow: hidden;
-    width: 60px;
-    height: 14px;
-    margin-right: 9px;
-    .start-no-active {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-    }
-    .start-active {
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+.start-container {
+  position: relative;
+  overflow: hidden;
+  width: 60px;
+  height: 14px;
+  margin-right: 9px;
+  .start-no-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
+  .start-active {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
 </style>

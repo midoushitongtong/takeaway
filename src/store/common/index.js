@@ -12,12 +12,12 @@ export default {
     address: {}
   },
   mutations: {
-    [types.EDIT_ADDRESS] (state, { address }) {
+    [types.EDIT_ADDRESS](state, { address }) {
       state.address = address;
     }
   },
   actions: {
-    async asyncEditAddress ({ commit, state }) {
+    async asyncEditAddress({ commit, state }) {
       // 异步获取数据
       const geoHash = state.latitude + ',' + state.longitude;
       const result = await api.common.getAddress({ geoHash });

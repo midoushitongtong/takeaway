@@ -52,79 +52,77 @@ export default {
   components: {
     Start
   },
-  data () {
+  data() {
     return {
       baseImageURL: 'http://cangdu.org:8001/img/'
     };
   },
   computed: {
-    ...mapState('merchant', [
-      'nearbyMerchantList'
-    ])
+    ...mapState('merchant', ['nearbyMerchantList'])
   }
 };
 </script>
 
 <style lang="scss">
-  // merchant container
-  .merchant-container {
-    position: relative;
-    margin-top: 10px;
-    margin-bottom: 61px;
-    padding-top: 10px;
-    background-color: #fff;
+// merchant container
+.merchant-container {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 61px;
+  padding-top: 10px;
+  background-color: #fff;
+  color: #666;
+  .title {
+    margin: 0;
+    padding-left: 10px;
+    color: #333;
+  }
+  .merchant-item {
+    @include border-bottom-1px(#e3e3e3);
+    display: flex;
+    font-size: 13px;
+    padding: 10px;
     color: #666;
-    .title {
-      margin: 0;
-      padding-left: 10px;
-      color: #333;
+    .merchant-logo img {
+      width: 100px;
+      height: 80px;
     }
-    .merchant-item {
-      @include border-bottom-1px(#e3e3e3);
-      display: flex;
-      font-size: 13px;
-      padding: 10px;
-      color: #666;
-      .merchant-logo img {
-        width: 100px;
-        height: 80px;
-      }
-      .merchant-info {
+    .merchant-info {
+      overflow: hidden;
+      width: 100%;
+      padding-top: 3px;
+      padding-left: 10px;
+      .merchant-title {
         overflow: hidden;
-        width: 100%;
-        padding-top: 3px;
-        padding-left: 10px;
-        .merchant-title {
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          font-size: 1rem;
-          font-weight: 600;
-          color: #333;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .merchant-rank {
+        display: flex;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        .merchant-sale-score {
+          margin-right: 9px;
         }
-        .merchant-rank {
-          display: flex;
-          padding-top: 9px;
-          padding-bottom: 9px;
-          .merchant-sale-score {
-            margin-right: 9px;
-          }
+      }
+      .merchant-condition-and-location {
+        display: flex;
+        justify-content: space-between;
+        .merchant-location span:first-child::after,
+        .merchant-condition span:first-child::after {
+          content: '|';
+          margin-left: 5px;
+          margin-right: 5px;
         }
-        .merchant-condition-and-location {
-          display: flex;
-          justify-content: space-between;
-          .merchant-location span:first-child::after,
-          .merchant-condition span:first-child::after {
-            content: '|';
-            margin-left: 5px;
-            margin-right: 5px;
-          }
-          .merchant-location {
-            margin-top: 9px;
-            color: #999;
-          }
+        .merchant-location {
+          margin-top: 9px;
+          color: #999;
         }
       }
     }
   }
+}
 </style>

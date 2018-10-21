@@ -24,9 +24,7 @@ export default {
     NearbyMerchantList
   },
   computed: {
-    ...mapState('common', [
-      'address'
-    ])
+    ...mapState('common', ['address'])
   }
 };
 </script>

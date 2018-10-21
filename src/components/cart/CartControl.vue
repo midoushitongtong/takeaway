@@ -25,7 +25,7 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'CartControl',
-  data () {
+  data() {
     return {
       cartCount: 0
     };
@@ -34,32 +34,28 @@ export default {
     food: Object
   },
   computed: {
-    ...mapState('cart', [
-      'cartList'
-    ])
+    ...mapState('cart', ['cartList'])
   },
   watch: {
     food: {
       deep: true,
-      handler (val) {
+      handler(val) {
         this.updateCartCount();
       }
     },
     cartList: {
       deep: true,
-      handler (val) {
+      handler(val) {
         this.updateCartCount();
       }
     }
   },
-  mounted () {
+  mounted() {
     this.updateCartCount();
   },
   methods: {
-    ...mapActions('cart', [
-      'editCartCount'
-    ]),
-    updateCartCount () {
+    ...mapActions('cart', ['editCartCount']),
+    updateCartCount() {
       let item = this.cartList.find(item => {
         return item.food.name === this.food.name;
       });
@@ -69,7 +65,7 @@ export default {
         this.cartCount = 0;
       }
     },
-    _editCartCount (isIncrement) {
+    _editCartCount(isIncrement) {
       if (isIncrement) {
         this.editCartCount({ isIncrement: true, food: this.food });
       } else {
@@ -81,36 +77,36 @@ export default {
 </script>
 
 <style lang="scss">
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity .3s, transform .3s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(50px) rotateX(150deg);
+}
+.cart-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+  span {
+    margin: 0 5px;
   }
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-    transform: translateX(50px) rotateX(150deg);
-  }
-  .cart-control {
+  .material-icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    right: 10px;
-    bottom: 15px;
-    span {
-      margin: 0 5px;
-    }
-    .material-icons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 19px;
-      width: 19px;
-      padding: 1px;
-      border-radius: 50%;
-      background-color: #06f;
-      color: #fff;
-      font-size: 13px;
-    }
+    height: 19px;
+    width: 19px;
+    padding: 1px;
+    border-radius: 50%;
+    background-color: #06f;
+    color: #fff;
+    font-size: 13px;
   }
+}
 </style>

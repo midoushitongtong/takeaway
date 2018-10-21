@@ -18,11 +18,9 @@ export default {
     FooterNav
   },
   computed: {
-    ...mapState('common', [
-      'address'
-    ])
+    ...mapState('common', ['address'])
   },
-  async mounted () {
+  async mounted() {
     Indicator.open();
     // 更新地址信息
     await this.asyncEditAddress();
@@ -36,25 +34,19 @@ export default {
     Indicator.close();
   },
   methods: {
-    ...mapActions('common', [
-      'asyncEditAddress'
-    ]),
-    ...mapActions('account', [
-      'asyncInitUserInfo'
-    ]),
-    ...mapActions('merchant', [
-      'asyncInitNearbyMerchantList'
-    ])
+    ...mapActions('common', ['asyncEditAddress']),
+    ...mapActions('account', ['asyncInitUserInfo']),
+    ...mapActions('merchant', ['asyncInitNearbyMerchantList'])
   }
 };
 </script>
 
 <style lang="scss">
-  body {
-    background: #f1f1f1;
-  }
+body {
+  background: #f1f1f1;
+}
 
-  a {
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+}
 </style>

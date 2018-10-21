@@ -186,75 +186,75 @@ export default {
 </script>
 
 <style lang="scss">
-.login-container {
-  height: 100vh;
-  background-color: #fff;
-  .container {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .action {
-    padding: 5vh 20px;
-    text-align: center;
-    a {
-      font-size: 20px;
-      color: #333;
+  .login-container {
+    height: 100vh;
+    background-color: #fff;
+    .container {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
     }
-    a:first-child {
-      margin-right: 20px;
+    .action {
+      padding: 5vh 20px;
+      text-align: center;
+      a {
+        font-size: 20px;
+        color: #333;
+      }
+      a:first-child {
+        margin-right: 20px;
+      }
+      a.active {
+        padding-bottom: 5px;
+        border-bottom: 3px solid #06f;
+        color: #06f;
+      }
     }
-    a.active {
-      padding-bottom: 5px;
-      border-bottom: 3px solid #06f;
-      color: #06f;
-    }
-  }
-  .form-container {
-    section {
-      display: none;
-    }
-    section.active {
-      display: block;
-      div {
-        position: relative;
-        margin-bottom: 15px;
-        input {
-          width: 100%;
-          padding: 13px 6px;
-          border: 1px solid #e5e5e5;
-          box-sizing: border-box;
+    .form-container {
+      section {
+        display: none;
+      }
+      section.active {
+        display: block;
+        div {
+          position: relative;
+          margin-bottom: 15px;
+          input {
+            width: 100%;
+            padding: 13px 6px;
+            border: 1px solid #e5e5e5;
+            box-sizing: border-box;
+          }
+          .send-phone-captcha {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            border: 0;
+            transform: translateY(-50%);
+            background-color: #fff;
+            color: #e1e1e1;
+            outline: none;
+          }
+          .right-phone {
+            color: #333;
+          }
         }
-        .send-phone-captcha {
+        .image-captcha img {
           position: absolute;
-          top: 50%;
-          right: 5px;
-          border: 0;
-          transform: translateY(-50%);
-          background-color: #fff;
-          color: #e1e1e1;
+          right: 0;
+          bottom: 0;
+          cursor: pointer;
           outline: none;
         }
-        .right-phone {
-          color: #333;
-        }
       }
-      .image-captcha img {
-        position: absolute;
-        right: 0;
-        bottom: 0;
+      .sign-in {
+        width: 100%;
+        padding: 15px 5px;
+        border: 1px solid #06f;
+        background-color: #06f;
+        color: #fff;
         cursor: pointer;
-        outline: none;
       }
-    }
-    .sign-in {
-      width: 100%;
-      padding: 15px 5px;
-      border: 1px solid #06f;
-      background-color: #06f;
-      color: #fff;
-      cursor: pointer;
     }
   }
-}
 </style>

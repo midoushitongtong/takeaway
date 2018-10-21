@@ -15,7 +15,7 @@
 <script>
 export default {
   name: 'FooterNav',
-  data () {
+  data() {
     return {
       navList: [
         {
@@ -45,29 +45,29 @@ export default {
 </script>
 
 <style lang="scss">
-  .footer-nav-container {
-    @include border-top-1px(#e5e5e5);
-    display: flex;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 51px;
-    background: #fff;
-    .footer-nav-item {
-      flex: 1;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      text-align: center;
-      color: #5d656b;
-      p {
-        margin: 0;
-        font-size: 13px;
-      }
-    }
-    .footer-nav-item:active,
-    .footer-nav-item.active {
-      color: #06f;
+.footer-nav-container {
+  @include border-top-1px(#e5e5e5);
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 51px;
+  background: #fff;
+  .footer-nav-item {
+    flex: 1;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    color: #5d656b;
+    p {
+      margin: 0;
+      font-size: 13px;
     }
   }
+  .footer-nav-item:active,
+  .footer-nav-item.active {
+    color: #06f;
+  }
+}
 </style>

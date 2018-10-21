@@ -68,21 +68,15 @@ import { mapState } from 'vuex';
 /* eslint-disable no-new */
 export default {
   name: 'MerchantInfo',
-  data () {
+  data() {
     return {
-      supportsClass: [
-        'error',
-        'warning',
-        'primary'
-      ]
+      supportsClass: ['error', 'warning', 'primary']
     };
   },
   computed: {
-    ...mapState('merchant', [
-      'merchantInfo'
-    ])
+    ...mapState('merchant', ['merchantInfo'])
   },
-  mounted () {
+  mounted() {
     new BScroll('.merchant-info-container', {
       scrollY: true,
       click: true
@@ -96,87 +90,87 @@ export default {
 </script>
 
 <style lang="scss">
-  .merchant-info-container {
-    overflow: hidden;
-    position: absolute;
-    top: 312px;
-    bottom: 0;
-    width: 100%;
-    background-color: #f1f1f1;
-    p {
-      margin: 0;
+.merchant-info-container {
+  overflow: hidden;
+  position: absolute;
+  top: 312px;
+  bottom: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  p {
+    margin: 0;
+  }
+  .merchant-info {
+    padding: 15px 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    h5 {
+      margin: 0 0 15px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
     }
-    .merchant-info {
-      padding: 15px 15px;
-      margin-bottom: 15px;
-      background-color: #fff;
-      h5 {
-        margin: 0 0 15px;
-        font-size: 20px;
-        font-weight: bold;
-        color: #000;
-      }
-      p {
-        line-height: 150%;
-        font-size: 15px;
-        color: #666;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-      .supports-list {
-        li {
-          margin-bottom: 15px;
-          color: #555;
-          .badge {
-            margin-right: 5px;
-            padding: 2px 9px;
-            border-radius: 12px;
-            font-size: 13px;
-            color: #fff;
-          }
-          .badge.error {
-            background-color: #f44336;
-          }
-          .badge.warning {
-            background-color: #ffc107;
-          }
-          .badge.primary {
-            background-color: #26a2ff;
-          }
+    p {
+      line-height: 150%;
+      font-size: 15px;
+      color: #666;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .supports-list {
+      li {
+        margin-bottom: 15px;
+        color: #555;
+        .badge {
+          margin-right: 5px;
+          padding: 2px 9px;
+          border-radius: 12px;
+          font-size: 13px;
+          color: #fff;
+        }
+        .badge.error {
+          background-color: #f44336;
+        }
+        .badge.warning {
+          background-color: #ffc107;
+        }
+        .badge.primary {
+          background-color: #26a2ff;
         }
       }
-      .album-list-container-wrapper {
-        position: relative;
-        overflow: hidden;
-        height: 110px;
-        .album-list-container {
-          position: absolute;
-          top: 0;
-          left: 0;
-          .album-list {
-            display: flex;
-            li {
-              width: 111px;
-              height: 75px;
-              margin-right: 10px;
-              img {
-                width: 100%;
-                height: 100%;
-              }
+    }
+    .album-list-container-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 110px;
+      .album-list-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        .album-list {
+          display: flex;
+          li {
+            width: 111px;
+            height: 75px;
+            margin-right: 10px;
+            img {
+              width: 100%;
+              height: 100%;
             }
           }
         }
       }
-      .merchant-info-list {
-        li {
-          @include border-bottom-1px(#e5e5e5);
-          display: flex;
-          justify-content: space-between;
-          padding: 20px 0;
-        }
+    }
+    .merchant-info-list {
+      li {
+        @include border-bottom-1px(#e5e5e5);
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0;
       }
     }
   }
+}
 </style>

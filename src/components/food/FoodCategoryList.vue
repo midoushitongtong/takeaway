@@ -36,16 +36,14 @@ import Swiper from 'swiper';
 /* eslint-disable no-new */
 export default {
   name: 'FoodCategoryList',
-  data () {
+  data() {
     return {
       imageBaseURL: 'https://fuss10.elemecdn.com/'
     };
   },
   computed: {
-    ...mapState('food', [
-      'foodCategoryList'
-    ]),
-    buildFoodCategoryList () {
+    ...mapState('food', ['foodCategoryList']),
+    buildFoodCategoryList() {
       // 根据 foodCategoryList 生成一个二维数组, 内部的小数组最大数量为 8
       const { foodCategoryList } = this;
       // 构建二维数组
@@ -67,7 +65,7 @@ export default {
     }
   },
   watch: {
-    foodCategoryList (value) {
+    foodCategoryList(value) {
       // foodCategoryList 绑定的 DOM 渲染完成后执行
       this.$nextTick(() => {
         new Swiper('.swiper-container', {
@@ -78,51 +76,49 @@ export default {
       });
     }
   },
-  mounted () {
+  mounted() {
     // 更新食物分类
     this.asyncEditFoodCategoryList();
   },
   methods: {
-    ...mapActions('food', [
-      'asyncEditFoodCategoryList'
-    ])
+    ...mapActions('food', ['asyncEditFoodCategoryList'])
   }
 };
 </script>
 
 <style lang="scss">
-  $height: 45px;
-  .food-category-container {
-    position: relative;
-    margin-top: $height;
-    height: 200px;
-    background-color: #fff;
-    .swiper-container {
-      width: 100%;
-      height: 100%;
-      .swiper-slide {
-        background: #fff;
-        .food-category-item {
-          display: inline-block;
-          width: 25%;
-          text-align: center;
-          margin-top: 11px;
-        }
-        .food-category-item .food-img {
-          display: block;
-          width: 45px;
-          height: 45px;
-          margin: 0 auto 5px;
-        }
-        .food-category-item .food-name {
-          display: block;
-          font-size: 13px;
-          color: #666;
-        }
+$height: 45px;
+.food-category-container {
+  position: relative;
+  margin-top: $height;
+  height: 200px;
+  background-color: #fff;
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    .swiper-slide {
+      background: #fff;
+      .food-category-item {
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+        margin-top: 11px;
       }
-      .swiper-pagination {
-        bottom: 15px;
+      .food-category-item .food-img {
+        display: block;
+        width: 45px;
+        height: 45px;
+        margin: 0 auto 5px;
+      }
+      .food-category-item .food-name {
+        display: block;
+        font-size: 13px;
+        color: #666;
       }
     }
+    .swiper-pagination {
+      bottom: 15px;
+    }
   }
+}
 </style>

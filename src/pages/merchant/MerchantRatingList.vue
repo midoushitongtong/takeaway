@@ -83,24 +83,25 @@ export default {
   components: {
     Star
   },
-  data () {
+  data() {
     return {
       isFilterOnlyMerchantRatingText: true,
       filterMerchantRatingType: 0
     };
   },
   computed: {
-    ...mapState('merchant', [
-      'merchantInfo',
-      'merchantRatingList'
-    ]),
-    merchantRatingPositiveLength (state) {
+    ...mapState('merchant', ['merchantInfo', 'merchantRatingList']),
+    merchantRatingPositiveLength(state) {
       return state.merchantRatingList.reduce((pre, item) => {
         return pre + (item.rateType === 0 ? 1 : 0);
       }, 0);
     },
-    filterRatingList () {
-      const { merchantRatingList, isFilterOnlyMerchantRatingText, filterMerchantRatingType } = this;
+    filterRatingList() {
+      const {
+        merchantRatingList,
+        isFilterOnlyMerchantRatingText,
+        filterMerchantRatingType
+      } = this;
       return merchantRatingList.filter(item => {
         // 过滤
         let flag = true;
@@ -123,27 +124,28 @@ export default {
     }
   },
   watch: {
-    filterRatingList () {
+    filterRatingList() {
       this.$nextTick(() => {
         if (!this.merchantRatingContainerScroll) {
-          this.merchantRatingContainerScroll = new BScroll('.merchant-rating-container', {
-            scrollY: true,
-            click: true
-          });
+          this.merchantRatingContainerScroll = new BScroll(
+            '.merchant-rating-container',
+            {
+              scrollY: true,
+              click: true
+            }
+          );
         } else {
           this.merchantRatingContainerScroll.refresh();
         }
       });
     }
   },
-  async mounted () {
+  async mounted() {
     await this.asyncEditMerchantRatingList();
   },
   methods: {
-    ...mapActions('merchant', [
-      'asyncEditMerchantRatingList'
-    ]),
-    setFilterMerchantRatingType (type) {
+    ...mapActions('merchant', ['asyncEditMerchantRatingList']),
+    setFilterMerchantRatingType(type) {
       this.filterMerchantRatingType = type;
     }
   }
@@ -151,129 +153,128 @@ export default {
 </script>
 
 <style lang="scss">
-  .merchant-rating-container {
-    overflow: hidden;
-    position: absolute;
-    top: 312px;
-    bottom: 0;
-    width: 100%;
-    background-color: #f1f1f1;
-    .merchant-rating-base {
-      background-color: #fff;
-      display: flex;
-      padding: 20px 0;
-      .rating-base-left {
-        flex: 1;
-        padding-top: 10px;
-        text-align: center;
-        border-right: 1px solid #e6e6e6;
-        p {
-          margin: 0 0 11px;
-        }
-        p:nth-child(1) {
-          font-size: 29px;
-          color: #f60;
-        }
-        p:nth-child(3) {
-          color: #555;
-        }
+.merchant-rating-container {
+  overflow: hidden;
+  position: absolute;
+  top: 312px;
+  bottom: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  .merchant-rating-base {
+    background-color: #fff;
+    display: flex;
+    padding: 20px 0;
+    .rating-base-left {
+      flex: 1;
+      padding-top: 10px;
+      text-align: center;
+      border-right: 1px solid #e6e6e6;
+      p {
+        margin: 0 0 11px;
       }
-      .rating-base-right {
-        flex: 1;
-        padding-top: 10px;
-        p {
-          display: flex;
-          margin: 0 0 20px;
-          padding-left: 20px;
-          font-size: 15px;
-          color: #333;
-        }
-        p:nth-child(1),
-        p:nth-child(2) {
-          span:nth-child(2) {
-            margin-left: 5px;
-          }
-          .start-container {
-            margin-left: 5px;
-          }
-        }
-        p:nth-child(3) span:last-child {
-          margin-left: 5px;
-          color: #555;
-        }
+      p:nth-child(1) {
+        font-size: 29px;
+        color: #f60;
+      }
+      p:nth-child(3) {
+        color: #555;
       }
     }
-    .merchant-rating-user {
-      margin-top: 20px;
-      background: #fff;
-      .merchant-rating-user-category {
-        padding: 20px;
-        @include border-bottom-1px(#e3e3e3);
-        button {
-          padding: 10px;
-          border: 1px solid #06f;
-          background-color: #06f;
-          color: #fff;
-          margin-right: 11px;
+    .rating-base-right {
+      flex: 1;
+      padding-top: 10px;
+      p {
+        display: flex;
+        margin: 0 0 20px;
+        padding-left: 20px;
+        font-size: 15px;
+        color: #333;
+      }
+      p:nth-child(1),
+      p:nth-child(2) {
+        span:nth-child(2) {
+          margin-left: 5px;
+        }
+        .start-container {
+          margin-left: 5px;
         }
       }
-      .merchant-rating-user-list-container {
-        background: #fff;
-        .merchant-rating-user-list {
-          .merchant-rating-user-list-item {
-            display: flex;
-            padding: 25px 25px 15px;
-            @include border-bottom-1px(#e1e1e1);
-            .rating-user-img {
-              width: 45px;
-              height: 45px;
-              img {
-                border-radius: 50%;
-                width: 100%;
-              }
+      p:nth-child(3) span:last-child {
+        margin-left: 5px;
+        color: #555;
+      }
+    }
+  }
+  .merchant-rating-user {
+    margin-top: 20px;
+    background: #fff;
+    .merchant-rating-user-category {
+      padding: 20px;
+      @include border-bottom-1px(#e3e3e3);
+      button {
+        padding: 10px;
+        border: 1px solid #06f;
+        background-color: #06f;
+        color: #fff;
+        margin-right: 11px;
+      }
+    }
+    .merchant-rating-user-list-container {
+      background: #fff;
+      .merchant-rating-user-list {
+        .merchant-rating-user-list-item {
+          display: flex;
+          padding: 25px 25px 15px;
+          @include border-bottom-1px(#e1e1e1);
+          .rating-user-img {
+            width: 45px;
+            height: 45px;
+            img {
+              border-radius: 50%;
+              width: 100%;
             }
-            .rating-user-detail {
-              flex: 1;
-              padding-left: 20px;
-              p {
-                margin: 0 0 10px;
-              }
-              .username-and-created-at {
-                display: flex;
-                justify-content: space-between;
-                span:last-child {
-                  color: #a69999;
-                }
-              }
-              .delivery-time {
+          }
+          .rating-user-detail {
+            flex: 1;
+            padding-left: 20px;
+            p {
+              margin: 0 0 10px;
+            }
+            .username-and-created-at {
+              display: flex;
+              justify-content: space-between;
+              span:last-child {
                 color: #a69999;
               }
-              .rating-text {
-                font-size: 15px;
-                line-height: 150%;
+            }
+            .delivery-time {
+              color: #a69999;
+            }
+            .rating-text {
+              font-size: 15px;
+              line-height: 150%;
+            }
+            .rating-type {
+              display: flex;
+              align-items: center;
+              margin-top: 20px;
+              .material-icons {
+                align-self: flex-start;
+                width: 35px;
+                font-size: 20px;
+                color: #f60;
               }
-              .rating-type {
-                display: flex;
-                align-items: center;
-                margin-top: 20px;
-                .material-icons {
-                  align-self: flex-start;
-                  width: 35px;
-                  font-size: 20px;
-                  color: #f60;
-                }
-                div {
-                  flex: 1;
-                  span {
-                    display: inline-block;
-                    margin-right: 5px;
-                    margin-bottom: 5px;
-                    padding: 5px;
-                    border: 1px solid #e5dbdb;
-                    border-radius: 5px;
-                    font-size: 13px;
-                    color: #a69999;
-                  }
+              div {
+                flex: 1;
+                span {
+                  display: inline-block;
+                  margin-right: 5px;
+                  margin-bottom: 5px;
+                  padding: 5px;
+                  border: 1px solid #e5dbdb;
+                  border-radius: 5px;
+                  font-size: 13px;
+                  color: #a69999;
                 }
               }
             }
@@ -282,4 +283,5 @@ export default {
       }
     }
   }
+}
 </style>
