@@ -1,10 +1,10 @@
 # takeaway
 ### 运行
-- 开启服务端
+- 服务端
 ```shell
 node /src/mock/json-server.js
 ```
-- 开启客户端
+- 客户端
 ```shell
 npm run serve
 ```
@@ -35,7 +35,7 @@ npm run serve
   + App.vue `根组件`
   + main.js `入口文件`
 
-### 知识点
+### 技术要点
 - 按需加载
   npm install babel-plugin-component -D
 
