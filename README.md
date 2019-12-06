@@ -1,16 +1,12 @@
 # takeaway
 ### 运行
-- 安装
-```shell
-/> npm install
-```
 - 开启服务端
 ```shell
-/src/mock> node json-server.js
+node /src/mock/json-server.js
 ```
 - 开启客户端
 ```shell
-/> npm run serve
+npm run serve
 ```
 
 ### 项目开发准备
